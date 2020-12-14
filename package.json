@@ -1,6 +1,6 @@
 {
   "name": "fb_multilogin_manager_desktop",
-  "productName": "fb_multilogin_manager_desktop",
+  "productName": "fb_multilogin_manager",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": "src/index.js",
@@ -9,7 +9,21 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "lint": "echo \"No linting configured\"",
+    "buildInstaller": "electron-builder"
+  },
+  "build":{
+    "appId": "fb_multilogin_manager",
+    "win":{
+      "target": "nsis",
+      "requestedExecutionLevel": "requireAdministrator"
+    },
+    "nsis":{
+      "uninstallDisplayName":"fb_multilogin_manager",
+      "license": "license.txt",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "keywords": [],
   "author": {
@@ -56,6 +70,7 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.54",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
     "@electron-forge/maker-zip": "^6.0.0-beta.54",
-    "electron": "11.0.3"
+    "electron": "11.0.3",
+    "electron-builder": "^22.9.1"
   }
 }
