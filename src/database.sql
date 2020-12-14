@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS fb_multilogin_manager;
 USE users;
 CREATE TABLE users ( 
 	id int AUTO_INCREMENT,
-	mail varchar(50),
+	email varchar(50),
 	username varchar(20),
 	fullname varchar(20),
 	password varchar(128),

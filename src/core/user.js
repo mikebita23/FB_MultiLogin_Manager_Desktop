@@ -11,7 +11,7 @@ User.prototype = {
         // if the user variable is defind
         if(user) {
             // if user = number return field = id, if user = string return field = username.
-            var field = Number.isInteger(user) ? 'id' : 'username';
+            var field = Number.isInteger(user) ? 'id' : 'email';
         }
         // prepare the sql query
         let sql = `SELECT * FROM users WHERE ${field} = ?`;
@@ -44,7 +44,7 @@ User.prototype = {
             bind.push(body[prop]);
         }
         // prepare the sql query
-        let sql = `INSERT INTO users(username, fullname, password) VALUES (?, ?, ?)`;
+        let sql = `INSERT INTO users(email, password) VALUES (?, ?, ?)`;
         // call the query give it the sql string and the values (bind array)
         pool.query(sql, bind, function(err, result) {
             if(err) throw err;
@@ -56,7 +56,7 @@ User.prototype = {
     login : function(username, password, callback)
     {
         // find the user data by his username.
-        this.find(username, function(user) {
+        this.find(email, function(user) {
             // if there is a user by this username.
             if(user) {
                 // now we check his password.
