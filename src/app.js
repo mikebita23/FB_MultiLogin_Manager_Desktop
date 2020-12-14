@@ -9,16 +9,16 @@ app.use(express.urlencoded( { extended : false}));
 
 
 // Serve static files. CSS, Images, JS files ... etc
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'css')));
 
 
-// Template engine. PUG
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+// Template engine. HTML
+app.set('src', path.join(__dirname, 'src'));
+app.set('src engine', 'html');
 
 // session
 app.use(session({
-    secret:'youtube_video',
+    secret:'fb_multilogin_manager',
     resave: false,
     saveUninitialized: false,
     cookie: {

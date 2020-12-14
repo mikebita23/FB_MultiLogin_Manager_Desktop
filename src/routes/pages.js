@@ -2,34 +2,34 @@ const express = require('express');
 const User = require('../core/user');
 const router = express.Router();
 
-// create an object from the class User in the file core/user.js
+// crée un objet à partir de la classe User dans le fichier core / user.js
 const user = new User();
 
-// Get the index page
+// Récupère la page d'index
 router.get('/', (req, res, next) => {
     let user = req.session.user;
-    // If there is a session named user that means the use is logged in. so we redirect him to home page by using /home route below
+   // S'il y a une session nommée user, cela signifie que l'utilisation est connectée. Nous le redirigeons donc vers la page d'accueil en utilisant / home route ci-dessous
     if(user) {
-        res.redirect('/bienvenue.html');
+        res.redirect('src/bienvenue.html');
         return;
     }
-    // IF not we just send the index page.
-    res.render('index', {title:"My application"});
+   // SI non, nous envoyons simplement la page d'index.
+    res.render('src/index.html', {title:"My application"});
 })
 
 // Get home page
-router.get('/bienvenue.html', (req, res, next) => {
+router.get('src/bienvenue.html', (req, res, next) => {
     let user = req.session.user;
 
     if(user) {
-        res.render('bienvenue.html', {opp:req.session.opp, name:user.fullname});
+        res.render('src/bienvenue.html', {opp:req.session.opp, name:user.fullname});
         return;
     }
     res.redirect('/');
 });
 
 // Post login data
-router.post('index.html', (req, res, next) => {
+router.post('src/index.html', (req, res, next) => {
     // The data sent from the user are stored in the req.body object.
     // call our login function and it will return the result(the user data).
     user.login(req.body.username, req.body.password, function(result) {
@@ -38,10 +38,10 @@ router.post('index.html', (req, res, next) => {
             req.session.user = result;
             req.session.opp = 1;
             // redirect the user to the home page.
-            res.redirect('bienvenue.html');
+            res.redirect('src/bienvenue.html');
         }else {
             // if the login function returns null send this error message back to the user.
-            res.send('Mail/Password incorrect!');
+            res.send('Email/Password incorrect!');
         }
     })
 
@@ -49,7 +49,7 @@ router.post('index.html', (req, res, next) => {
 
 
 // Post inscription.html data
-router.post('inscription.html', (req, res, next) => {
+router.post('src/inscription.html', (req, res, next) => {
     // prepare an object containing all user inputs.
     let userInput = {
         username: req.body.username,
@@ -64,7 +64,7 @@ router.post('inscription.html', (req, res, next) => {
             user.find(lastId, function(result) {
                 req.session.user = result;
                 req.session.opp = 0;
-                res.redirect('bienvenue.html');
+                res.redirect('src/bienvenue.html');
             });
 
         }else {
@@ -76,7 +76,7 @@ router.post('inscription.html', (req, res, next) => {
 
 
 // Get loggout page
-router.get('/loggout', (req, res, next) => {
+router.get('/src/bienvenue.html', (req, res, next) => {
     // Check if the session is exist
     if(req.session.user) {
         // destroy the session and redirect the user to the index page.
