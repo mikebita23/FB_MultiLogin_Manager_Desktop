@@ -12,10 +12,7 @@
     "lint": "echo \"No linting configured\""
   },
   "keywords": [],
-  "author": {
-    "name": "Nidal El Fengaoui",
-    "email": "nidal.fengaoui@gmail.com"
-  },
+  "author": "Nidal El Fengaoui <nidal.fengaoui@gmail.com>",
   "license": "MIT",
   "config": {
     "forge": {
@@ -45,10 +42,18 @@
     }
   },
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "bootstrap": "^4.5.3",
     "electron-reload": "^1.5.0",
     "electron-squirrel-startup": "^1.0.0",
-    "jquery": "^3.5.1"
+    "express-mysql-session": "^2.1.5",
+    "express-session": "^1.17.1",
+    "html": "^1.0.0",
+    "jquery": "^3.5.1",
+    "mysql": "^2.18.1",
+    "mysql-express-session": "^0.5.2",
+    "nodejs": "0.0.0",
+    "util.promisify": "^1.0.1"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.54",
@@ -56,6 +61,15 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.54",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
     "@electron-forge/maker-zip": "^6.0.0-beta.54",
-    "electron": "11.0.3"
-  }
+    "electron": "^11.0.4",
+    "nodemon": "^2.0.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/N0k3r/fb_multilogin_manager_desktop.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/N0k3r/fb_multilogin_manager_desktop/issues"
+  },
+  "homepage": "https://gitlab.com/N0k3r/fb_multilogin_manager_desktop#readme"
 }
