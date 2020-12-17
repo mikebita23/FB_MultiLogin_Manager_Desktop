@@ -5,8 +5,7 @@ const {
 const ProxyChain = require('proxy-chain');
 const path = require('path')
 
-ggdfghjkfgh
-dfcghj
+
 const setProcessCommand = (attributes) => {
     res = '';
     if (attributes.cmd) res = `${attributes.cmd}`;
