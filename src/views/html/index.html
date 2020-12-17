@@ -3,19 +3,18 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <title>Accueil</title>
+    <title>Accueil</title>
 
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
 
-  <!-- Custom styles for this template -->
-  <link href="./css/simple-sidebar.css" rel="stylesheet">
-
+    <!-- Custom styles for this template -->
+    <link href="../css/simple-sidebar.css" rel="stylesheet">
 </head>
 
 <body id="backg_blue">
@@ -25,14 +24,16 @@
                 <div class="card card-signin my-5">
                     <div class="card-body">
                         <h5 class="card-title text-center"><b>Se connecter</b></h5>
-                        <form class="form-signin" action="./bienvenue.html">
+                        <form class="form-signin" action="./bienvenue.html" method="POST">
                             <div class="form-label-group">
                                 <br>
-                                <input type="text" id="inputEmail" class="form-control" placeholder="Adresse e-mail" required autofocus>
+                                <input type="text" id="inputEmail" class="form-control" placeholder="Adresse e-mail"
+                                    required autofocus>
                             </div>
                             <div class="form-label-group">
                                 <br>
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Saisissez votre mot de passe" required>
+                                <input type="password" id="inputPassword" class="form-control"
+                                    placeholder="Saisissez votre mot de passe" required>
                                 <div class="text-right">
                                     <a href="#" id="mdp_forgot">Mot de passe oublié ?</a>
                                 </div>
@@ -40,14 +41,14 @@
                                 <br>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-success">valider</button>
+                                <button type="button" id="submitButton" class="btn btn-success">valider</button>
                             </div>
                             <br>
                             <br>
                         </form>
                         <br>
                     </div>
-                 </div>
+                </div>
             </div>
         </div>
         <div class="text-center">
@@ -55,7 +56,7 @@
             <a href="./offre.html"><button type="button" class="btn btn-light"><b>essayer gratuitement</b></button></a>
         </div>
     </div>
-
+    <script src="../js/index.js"></script>
 </body>
 
 </html>

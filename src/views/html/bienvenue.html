@@ -11,14 +11,17 @@
   <title>Page de bienvenue</title>
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
-  <script>window.$ = window.jQuery = require("../node_modules/jquery/dist/jquery.min.js");</script>
+  <script>window.$ = window.jQuery = require("../vendor/jquery/jquery.min.js");</script>
   <script>
     var myApp = angular.module('myApp', []);
     
-    myApp.controller('sessionController', function($scope, $http) {                    
+    myApp.controller('sessionController', function($scope, $http) {
+        $scope.openSession = id => {
+          ipcRenderer.send('open-session', id);
+        }                
         $http({
                 method: 'GET',
                 url: './sessions.json'
@@ -29,10 +32,12 @@
                 console.log('Un problème est survenu.');
             });       
     });
+
+    const { ipcRenderer } = require('electron');
   </script> 
 
   <!-- Custom styles for this template -->
-  <link href="./css/simple-sidebar.css" rel="stylesheet">
+  <link href="../css/simple-sidebar.css" rel="stylesheet">
 
 </head>
 
@@ -136,7 +141,7 @@
                       class="fa fa-spinner" aria-hidden="true"></i></button>
                 </div>
                 <div ng-if="session.description == 'Lancer la session...'">
-                  <button type="button" onClick="chromium()" class="btn btn-primary">{{session.description}}&nbsp;&nbsp;<i
+                  <button type="button" ng-click="openSession(session.id)" class="btn btn-primary" >{{session.description}}&nbsp;&nbsp;<i
                       class="fa fa-arrow-right" aria-hidden="true"></i></button>
                 </div>
               </div> 
@@ -160,7 +165,7 @@
 
   <!-- Bootstrap core JavaScript -->
   <!--<script src="vendor/jquery/jquery.min.js"></script>-->
-  <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Menu Toggle Script -->
   <script>
@@ -176,6 +181,8 @@
       event.preventDefault();
       shell.openExternal(this.href);
     });
+
+
   </script>
 <!-- 
   <script type="text/javascript">
