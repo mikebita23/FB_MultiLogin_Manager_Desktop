@@ -1,9 +1,12 @@
 const Navigator = require('chromium');
-const { exec } = require('child_process');
+const {
+    exec
+} = require('child_process');
 const ProxyChain = require('proxy-chain');
 const path = require('path')
 
-
+ggdfghjkfgh
+dfcghj
 const setProcessCommand = (attributes) => {
     res = '';
     if (attributes.cmd) res = `${attributes.cmd}`;
@@ -19,16 +22,19 @@ module.exports = {
         let child = exec(
             setProcessCommand({
                 cmd: Navigator.path,
-                dir : path.join(__userDataDir,'navSessions', `session-${id}`),
-                proxy : {
+                dir: path.join(__userDataDir, 'navSessions', `session-${id}`),
+                proxy: {
                     url: proxy.split(':')[1].split('/')[2],
                     port: proxy.split(':')[2]
                 }
             }),
             (err, stdout, stderr) => {
                 ProxyChain.closeAnonymizedProxy(proxy, true)
-                if(err) return -1
-                return { stdout: stdout, stderr: stderr }
+                if (err) return -1
+                return {
+                    stdout: stdout,
+                    stderr: stderr
+                }
             }
         );
     }
