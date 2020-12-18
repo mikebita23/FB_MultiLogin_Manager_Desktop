@@ -1,12 +1,13 @@
 const { ipcMain } = require('electron');
-const session = require('./proxyManager');
+const nav = require('./navigatorController')
 const API = require('./APIcontroller')
 
 
 
 ipcMain.on('open-session', (e, idSession)=>{
-    session.open(idSession)
-    // console.log(" \t session responde with ", nav);
+    console.log(__filename,' ===> openning a session with id : ',idSession);
+    nav.open(idSession)
+    console.log(__filename,' ===> session with id : ',idSession,'is closed');
 })
 
 ipcMain.on('ask-for-auth', (event, args) =>{

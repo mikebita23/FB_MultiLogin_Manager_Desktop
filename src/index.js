@@ -1,6 +1,7 @@
 const { app, BrowserWindow} = require('electron');
 const eventHandler = require('./app/eventHandler');
 global.__userDataDir = app.getPath("userData");
+global.__API_URL = "https://gls-login.herokuapp.com";
 const path = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -28,7 +29,7 @@ const createWindow = () => {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, 'views/html/index.html'));
+  mainWindow.loadFile(path.join(__dirname, 'views/html/bienvenue.html'));
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();

@@ -1,30 +1,37 @@
 const request = require('request-promise');
 
-const API_URL = "https://gls-login.herokuapp.com";
-
 module.exports = {
     connect: (email, password) => {
         console.log(email, password);
         return request({
             method: 'POST',
-            url: `${API_URL}/Auth/login`,
+            url: `${__API_URL}/Auth/login`,
             body: {
                 email: email,
                 passWord: password
             },
             json: true
-        }).then(res =>{
-            console.log("then : \n",res);
-            return res;
-        }).catch(err =>{
-            console.log("cath : \n",err.statusCode, err.error);
-            return err;
         })
     },
+
+    getProxy: _ => {
+        return request({
+            method: 'GET',
+            url: `${__API_URL}/proxy/open`,
+        })
+    },
+
+    closeProxy: port =>{
+        return request({
+            method: 'GET',
+            url: `${__API_URL}/proxy/close/${port}`,
+        })
+    },
+
     createUser: (userData) => {
         return request({
             method: 'POST',
-            url: `${API_URL}/users/add`,
+            url: `${__API_URL}/users/add`,
             body: {
                 firstName : userData.firstName,
                 lastName  : userData.lastName,
@@ -35,12 +42,6 @@ module.exports = {
                 forfaitId :null
             },
             json: true
-        }).then(res =>{
-            console.log(res);
-            return res;
-        }).catch(err =>{
-            console.log(err.statusCode, err.error);
-            return err;
         })
     }
 }
