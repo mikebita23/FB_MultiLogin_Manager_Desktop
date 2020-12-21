@@ -1,6 +1,7 @@
 const request = require('request-promise');
 
 const API_URL = "https://gls-login.herokuapp.com";
+const API_Msg= "http://localhost:3004/"
 
 module.exports = {
     connect: (email, password) => {
@@ -42,5 +43,26 @@ module.exports = {
             console.log(err.statusCode, err.error);
             return err;
         })
+    },
+
+    sendMessager: (userData) => {
+        return request({
+            method: 'POST',
+            url: `${API_URL}/Msg/add`,
+            body: {
+                objet : userData.objet,
+                contenu : userData.contenu,
+                senderId : userData.senderId
+               
+            },
+            json: true
+        }).then(res =>{
+            console.log(res);
+            return res;
+        }).catch(err =>{
+            console.log(err.statusCode, err.error);
+            return err;
+        })
     }
+
 }

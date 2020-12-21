@@ -41,8 +41,22 @@ const emp = new bd({
 
 })
 
-//emp.save().then(result) => {
-//console.log(result)
-//}).catch((error)) => {
-//    console.log('Error is', error()
-//    })
+
+const API_URL = "http://localhost:3004/";
+('users', {
+    objet: {
+        type: String,
+        required: true,
+    },
+    contenu: {
+        type: String,
+        required: true,
+    },
+    senderId: {
+        type: Integer,
+        required: true,
+    },
+  
+
+})
+
