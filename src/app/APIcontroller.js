@@ -13,11 +13,11 @@ module.exports = {
                 passWord: password
             },
             json: true
-        }).then(res =>{
-            console.log("then : \n",res);
+        }).then(res => {
+            console.log("then : \n", res);
             return res;
-        }).catch(err =>{
-            console.log("cath : \n",err.statusCode, err.error);
+        }).catch(err => {
+            console.log("cath : \n", err.statusCode, err.error);
             return err;
         })
     },
@@ -26,19 +26,19 @@ module.exports = {
             method: 'POST',
             url: `${API_URL}/users/add`,
             body: {
-                firstName : userData.firstName,
-                lastName  : userData.lastName,
-                email : userData.email,
-                phoneNumber : userData.phoneNumber,
-                passWord  : userData.passWord,
-                role  : "CLIENT",
-                forfaitId :null
+                firstName: userData.firstName,
+                lastName: userData.lastName,
+                email: userData.email,
+                phoneNumber: userData.phoneNumber,
+                passWord: userData.passWord,
+                role: "CLIENT",
+                forfaitId: null
             },
             json: true
-        }).then(res =>{
+        }).then(res => {
             console.log(res);
             return res;
-        }).catch(err =>{
+        }).catch(err => {
             console.log(err.statusCode, err.error);
             return err;
         })
