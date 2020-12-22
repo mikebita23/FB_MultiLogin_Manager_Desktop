@@ -1,12 +1,7 @@
 
-
-  
-
 //Reuperation de data
 var app = angular.module('MyApp', []);
-
-  
-    
+   
 app.controller('sessionController', function($scope, $http) {                    
     $http({
             method: 'GET',
@@ -57,10 +52,7 @@ console.log("YESY")
         })
     }
 
-
 });
-
-
 
 var myApp = angular.module('MyApp', []);
 myApp.controller('prospectController', function($scope, $http) {  
