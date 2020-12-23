@@ -11,18 +11,11 @@
   <title>Page de bienvenue</title>
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
-
-  <script>window.$ = window.jQuery = require("../node_modules/jquery/dist/jquery.min.js");</script>
-  <script type="text/javascript" src="./app/appMessage.js"></script>
-
-
-  
-
   <!-- Custom styles for this template -->
-  <link href="./css/simple-sidebar.css" rel="stylesheet">
+  <link href="../css/simple-sidebar.css" rel="stylesheet">
 
 </head>
 
@@ -94,8 +87,51 @@
               </div>
   
               <!-- Modal -->
+<<<<<<< HEAD:src/bienvenue.html
               
               
+=======
+              <div class="modal fade" id="isButton" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Envoyez-nous un message</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <textarea class="form-control rounded-0" rows="3"></textarea>
+                    </div>    
+                    <!-- Default radio -->
+                    <div class="form-check text-center">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="flexRadioDefault"
+                        id="flexRadioDefault1"
+                      />
+                      <label class="form-check-label" for="flexRadioDefault1">Aide</label>
+                    </div>
+
+                    <!-- Default checked radio -->
+                    <div class="form-check text-center">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="flexRadioDefault"
+                        id="flexRadioDefault2"
+                      />
+                      <label class="form-check-label" for="flexRadioDefault2">Blocage </label>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                      <button type="button" class="btn btn-primary">Envoyer message</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+>>>>>>> dev:src/views/html/bienvenue.html
               <br>
               <div ng-if="session.etat == 'Active'">
                 <p class="text-success">{{session.etat}}.</p><br>
@@ -109,7 +145,7 @@
                       class="fa fa-spinner" aria-hidden="true"></i></button>
                 </div>
                 <div ng-if="session.description == 'Lancer la session...'">
-                  <button type="button" onClick="chromium()" class="btn btn-primary">{{session.description}}&nbsp;&nbsp;<i
+                  <button type="button" ng-click="openSession(session.id)" class="btn btn-primary" >{{session.description}}&nbsp;&nbsp;<i
                       class="fa fa-arrow-right" aria-hidden="true"></i></button>
                 </div>
               </div> 
@@ -117,6 +153,9 @@
                 <button type="button" class="btn btn-warning" disabled>{{session.description}}</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </div>
               <hr>
+            </div>
+            <div class="jumbotron">
+              <a href="./parrainage.html"><i class="fa fa-plus" aria-hidden="true"></i>  Ajouter une session </a>
             </div>
           </div>
         </div>
@@ -161,23 +200,10 @@
 
   <!-- Bootstrap core JavaScript -->
   <!--<script src="vendor/jquery/jquery.min.js"></script>-->
-  <script src="./vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Menu Toggle Script -->
-  <script>
-    $("#menu-toggle").click(function (e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
-
-    const shell = require('electron').shell;
-
-    // assuming $ is jQuery
-    $(document).on('click', 'a[href^="http"]', function (event) {
-      event.preventDefault();
-      shell.openExternal(this.href);
-    });
-  </script>
+ <script src="../js/bienvenue.js"></script>
 <!-- 
   <script type="text/javascript">
     function chromium() {
