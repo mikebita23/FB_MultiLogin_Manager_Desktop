@@ -29,7 +29,7 @@ const createWindow = () => {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, 'views/html/bienvenue.html'));
+  mainWindow.loadFile(path.join(__dirname, 'views/html/index.html'));
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
