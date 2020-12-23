@@ -1,6 +1,6 @@
 const Navigator = require('chromium');
 const { exec } = require('child_process');
-const api = require('./APIcontroller')
+const api = require('../API/proxy')
 const path = require('path')
 
 
