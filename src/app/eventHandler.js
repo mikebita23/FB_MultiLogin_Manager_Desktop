@@ -1,16 +1,12 @@
 const { ipcMain } = require('electron');
-const nav = require('./Controllers/navigatorController')
-const API = require('./API/proxy')
+const session = require('./proxyManager');
+const API = require('./APIcontroller')
 
 
 
 ipcMain.on('open-session', (e, idSession)=>{
-    // console.log(__filename,' ===> openning a session with id : ',idSession);
-    // nav.open(idSession)
-    // console.log(__filename,' ===> session with id : ',idSession,'is closed');
-    API.getProxy().then(res => {
-        console.log(res);
-    })
+    session.open(idSession)
+    // console.log(" \t session responde with ", nav);
 })
 
 ipcMain.on('ask-for-auth', (event, args) =>{
@@ -20,18 +16,3 @@ ipcMain.on('ask-for-auth', (event, args) =>{
         // erro to handl
     })
 })
-
-
-let objetMessage ={
-    Objet:'',
-    Content:'',
-    senderId: ''
-}
-ipcMain.on('send-message', (event, args) =>{
-    API.sendMessage(objetMessage).then(res => {
-        event.reply('send-message-reply', res.statusCode < 400)
-    }).catch(err => {
-        // erro to handl
-    })
-})
-

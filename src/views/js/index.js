@@ -8,7 +8,6 @@ $('#submitButton').on('click', _ =>{
 });
 
 ipcRenderer.on('ask-for-auth-reply', (_, res) => {
-    
     console.log(res);
     if (res) {
         console.log('3awdha lkarek ghadi nredericti');

@@ -81,14 +81,3 @@
   pointer-events: none;
   color: #aaa;
 }
-
-
-.jumbotron { 
- height: 144px; 
- /*width: auto; */
-}
-
-a:link 
-{ 
- text-decoration:none; 
-}
