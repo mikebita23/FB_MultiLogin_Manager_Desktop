@@ -1,4 +1,5 @@
-window.$ = window.jQuery = require("../vendor/jquery/jquery.min.js");
+const { ipcRenderer } = require('electron');
+window.$ = window.jQuery = require("../../../node_modules/jquery/dist/jquery");
 
 var myApp = angular.module('myApp', []);
 
@@ -17,9 +18,6 @@ myApp.controller('sessionController', function ($scope, $http) {
         });
 });
 
-const { ipcRenderer } = require('electron');
-
-
 $("#menu-toggle").on('click', function (e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
@@ -32,3 +30,4 @@ $(document).on('click', 'a[href^="http"]', function (event) {
     event.preventDefault();
     shell.openExternal(this.href);
 });
+
