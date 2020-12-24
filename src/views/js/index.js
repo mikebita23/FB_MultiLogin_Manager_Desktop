@@ -16,3 +16,4 @@ ipcRenderer.on('ask-for-auth-reply', (_, res) => {
         $("#submitButton").prop("disabled", false);
     }
 })
+

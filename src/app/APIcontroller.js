@@ -42,5 +42,42 @@ module.exports = {
             console.log(err.statusCode, err.error);
             return err;
         })
+    },
+
+    sendMessage: (messageData) => {
+        return request({
+            method: 'POST',
+            url: `${API_URL}/Msg/add`,
+            body: {
+                Object: messageData.Object,
+                Content: messageData.Content,
+                senderId: messageData.senderId,
+               
+            },
+            json: true
+        }).then(res => {
+            console.log(res);
+            return res;
+        }).catch(err => {
+            console.log(err.statusCode, err.error);
+            return err;
+        })
+    },
+    getMessage: (idMessage) => {
+        return request({
+            method: 'GET',
+            url: `${API_URL}/Msg/all`,
+            json: true
+        }).then(res => {
+            console.log(res);
+            return res;
+        }).catch(err => {
+            console.log(err.statusCode, err.error);
+            return err;
+        })
     }
+
+    
+    
+    
 }

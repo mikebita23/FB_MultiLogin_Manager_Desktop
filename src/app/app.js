@@ -34,6 +34,23 @@ const API_URL = "https://gls-login.herokuapp.com";
 
 
 })
+('message', {
+    Object: {
+        type: String,
+        required: true,
+    },
+    Content: {
+        type: String,
+        required: true,
+    },
+    senderId: {
+        type: Integer,
+        required: true,
+    }
+    
+
+
+})
 
 const emp = new bd({
     email: '',
