@@ -1,10 +1,22 @@
 const {
     app,
-    BrowserWindow
+    BrowserWindow,
+    dialog
 } = require('electron');
 const eventHandler = require('./app/eventHandler');
+
 global.__userDataDir = app.getPath("userData");
+
 const path = require('path');
+const { electron } = require('process');
+
+
+// const ipc =electron.ipcMain
+// const message = electron.dialog
+// ipc.on('send-message-dialog', function(event){
+//     dialog.showErrorBox('send error message', 'Demo of an error message')
+
+// })
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -31,7 +43,7 @@ const createWindow = () => {
     });
 
     // and load the index.html of the app.
-    mainWindow.loadFile(path.join(__dirname, 'views/html/index.html'));
+    mainWindow.loadFile(path.join(__dirname, 'views/html/bienvenue.html'));
 
     // Open the DevTools.
     mainWindow.webContents.openDevTools();
@@ -57,6 +69,7 @@ app.on('activate', () => {
         createWindow();
     }
 });
+
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
