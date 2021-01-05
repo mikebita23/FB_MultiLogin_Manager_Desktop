@@ -9,7 +9,7 @@
 }
 
 #backg_blue{
-  background: #0074d9;
+  background: rgb(15, 76, 246);
 }
 
 #backg_white{
@@ -18,7 +18,7 @@
 
 #mdp_forgot{
   color: black;
-  font-style: italic;
+  /*font-style: italic;*/
 }
 
 #texte_white{
@@ -91,4 +91,16 @@
 a:link 
 { 
  text-decoration:none; 
+}
+
+.valider{
+  background-color:#39cf87;
+  color:white;
+  width: 45%;;
+  padding: 10px;
+}
+
+.essayer{
+  background-color: white;
+  padding: 15px;
 }
