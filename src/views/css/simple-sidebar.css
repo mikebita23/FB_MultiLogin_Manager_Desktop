@@ -98,9 +98,27 @@ a:link
   color:white;
   width: 45%;;
   padding: 10px;
+  /*font-size: 0.9em;*/
 }
 
 .essayer{
   background-color: white;
   padding: 15px;
+}
+
+#taille_mdp{
+  font-size: 0.7em;
+  font-style: italic;
+}
+
+.lateral{
+  background: rgb(15, 76, 246);
+}
+
+.fond_bleu{
+  background: rgb(15, 76, 246);
+}
+
+.radius{
+  border-radius: 10px;
 }
