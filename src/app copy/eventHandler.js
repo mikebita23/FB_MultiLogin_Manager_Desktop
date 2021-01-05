@@ -4,6 +4,7 @@ const { ipcMain } = require('electron');
 const apiMessage = require('./API/message');
 const apiForfait = require('./API/forfait');
 const apiUser = require('./API/user');
+const { event } = require('jquery');
 
 // Message 
 ipcMain.on('send-message', (event, data) =>{
@@ -14,11 +15,16 @@ ipcMain.on('send-message', (event, data) =>{
 });
 
 //Users
-ipcMain.on('update-user', (event, data) =>{
-    apiUser.updateUser(data, (err, res, body)=> {
+ipcMain.on('update-user', ( event, data) =>{
+    apiUser.updateUser(data, (res)=> {
         event.reply('update-user-reply', res.statusCode < 400)  
      })
 });
+ipcMain.on('get-user', (event, idUser)=>{
+    apiUser.getUser(idUser, (res)=>{
+        event.reply('get-User-reply', true)
+    });
+})
 
 
 //Forfait
