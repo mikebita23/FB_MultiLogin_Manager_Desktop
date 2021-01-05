@@ -10,7 +10,7 @@ $('#dataF').on('click', _ =>{
 
     $.ajax({
         //url: 'https://gls-login.herokuapp.com/forf/all',
-        url: 'http://localhost:3008/forf/all',
+        url: 'http://localhost:3003/Msg/all',
         dataType: 'json',
         success: function(data) {
 
