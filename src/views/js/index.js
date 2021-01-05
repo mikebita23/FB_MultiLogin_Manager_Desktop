@@ -1,5 +1,9 @@
 const { ipcRenderer } = require('electron');
+const { BrowserWindow } = require('electron/main');
 window.$ = window.jQuery = require("../vendor/jquery/jquery.min.js");
+
+const BrowserWindow= electron.remote.BrowserWindow
+let win= new BrowserWindow;
 
 $('#submitButton').on('click', _ =>{
     console.log($('#inputEmail').val(), $('#inputPassword').val());

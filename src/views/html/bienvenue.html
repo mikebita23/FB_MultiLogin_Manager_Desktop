@@ -54,14 +54,15 @@
       </nav>
 ​
 ​
-      <div class="container-fluid">
+      <div id= "container" class="container-fluid">
 ​
         <h3>Liste de mes sessions</h3><br>
 ​
         <div ng-controller="sessionController">
           <div class="form-group has-search col-md-6">
             <span class="fa fa-search form-control-feedback"></span>
-            <input type="text" class="form-control" placeholder="Rechercher une session" ng-model="search">
+            <input id="seach" type="text" class="form-control" placeholder="Rechercher une session" ng-model="search">
+            <!-- <input  type="button"  value="OK" onclick= "buttClickGet()" /> -->
           </div>
           <!--  <div ng-repeat="session in sessions | filter:{content: query} | orderBy:order"> -->
           <div class="row">
@@ -102,19 +103,20 @@
                     <div class="modal-body">
                       <textarea id="areaContenu" class="form-control rounded-0" rows="3"></textarea>
                     </div>
-                    <div  name="object">
+                    <div >
 
                       
-                       <!-- Default radio -->
-                    <div class="form-check text-center">
+                     <!-- Default radio -->
+                     <div class="form-check text-center">
                       <input
                         class="form-check-input"
                         type="radio"
-                        id="aide" 
-                        name="Aide"
-                        
+                        name="flexRadioDefault"
+                        id="aide"
+                        value="aide"
+                        checked="checked"
                       />
-                      <label class="form-check-label" for="flexRadioDefault1">Aide</label>
+                      <label class="form-check-label" for="aide">Aide</label>
                     </div>
 
                     <!-- Default checked radio -->
@@ -122,12 +124,11 @@
                       <input
                         class="form-check-input"
                         type="radio"
+                        name="flexRadioDefault"
                         id="blocage"
-                        name="Blocage"
-                        
-                       
+                        value="blocage"
                       />
-                      <label class="form-check-label" for="flexRadioDefault2">Blocage </label>
+                      <label class="form-check-label" for="blocage">Blocage </label>
                     </div>
                     </div>
                   
@@ -211,6 +212,8 @@
 
  <script src="../js/bienvenue.js" >
 </script>
+<!-- <script src="../js/message.js" >
+</script> -->
 <!-- 
   <script type="text/javascript">
     function chromium() {

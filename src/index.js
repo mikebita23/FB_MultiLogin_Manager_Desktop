@@ -3,7 +3,7 @@ const {
     BrowserWindow,
     dialog
 } = require('electron');
-const eventHandler = require('./app/eventHandler');
+require('./app copy/eventHandler')
 
 global.__userDataDir = app.getPath("userData");
 
@@ -29,6 +29,7 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 //   electron: require(`${__dirname}/node_modules/electron`)
 // });
 
+require('electron-reload')(__dirname);
 
 const createWindow = () => {
     // Create the browser window.
@@ -43,7 +44,7 @@ const createWindow = () => {
     });
 
     // and load the index.html of the app.
-    mainWindow.loadFile(path.join(__dirname, 'views/html/bienvenue.html'));
+    mainWindow.loadFile(path.join(__dirname, 'views/html/forfait.html'));
 
     // Open the DevTools.
     mainWindow.webContents.openDevTools();
