@@ -2,7 +2,7 @@ const request = require('request-promise');
 
 const API_URL = "https://gls-login.herokuapp.com";
 const Auth = {
-    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imdsc0BnbHMuY29tIiwidXNlcklkIjozNiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjA5ODU4NDA0LCJleHAiOjE2MDk4NjIwMDR9._KOazNWm4e4y2Ff7QRnWk35Y9pyoPGXjQBxfB5g2Ydw"
+    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImlicmFAaWJyYS5jb20iLCJ1c2VySWQiOjQxLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MTAwMjUwNzMsImV4cCI6MTYxMDAyODY3M30.Xu_lxtv_jZQGZSRqvKvTrFOVUSspvyO6q-OIedrBJ6s"
 }
 module.exports = {
   // idUser= 
@@ -29,10 +29,10 @@ module.exports = {
             return err;
         })
     },
-    getUser: (idUser, callBack) => {
+    getUser: () => {
         return request({
-            method: 'GET',
-            url: `${API_URL}/users/get/${idUser}`,
+            method: 'POST',
+            url: `${API_URL}/users/get`,
             auth: Auth,
             json: true
         }).then(res => {

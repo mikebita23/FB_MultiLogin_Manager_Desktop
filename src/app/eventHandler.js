@@ -9,22 +9,19 @@ const { event } = require('jquery');
 // Message 
 ipcMain.on('send-message', (event, data) =>{
     apiMessage.sendMessage(data, (err, res, body)=> {
-        event.reply('send-message-reply', res.statusCode < 400)
-       
+        event.reply('send-message-reply',true)     
      })
 });
 
 //Users
 ipcMain.on('update-user', ( event, data) =>{
     apiUser.updateUser(data, (res)=> {
-        event.reply('update-user-reply', res.statusCode < 400)  
+        event.reply('update-user-reply', true)  
      })
 });
-ipcMain.on('get-user', (event, idUser)=>{
-    apiUser.getUser(idUser, (res)=>{
-        event.reply('get-User-reply', true)
+ipcMain.on('get-user',_=>{
+    apiUser.getUser()
     });
-})
 
 
 //Forfait
@@ -32,26 +29,26 @@ ipcMain.on('get-user', (event, idUser)=>{
 ipcMain.on('add-forfait', (event, data) =>{
     apiMessage.addForfait(data).then(res => {
         console.log(data)
-        event.reply('add-forfait-reply', res.statusCode < 400)
+        event.reply('add-forfait-reply', true)
     }).catch(err => {
-        // erro to handl
+        console.log(err)
     })
 });
 
 ipcMain.on('udapte-forfait', (event, data) =>{
     apiMessage.updateForfait(idForfait).then(res => {
         console.log(data)
-        event.reply('update-forfait-reply', res.statusCode < 400)
+        event.reply('update-forfait-reply',true)
     }).catch(err => {
-        // erro to handl
+        console.log(err)
     })
 });
 ipcMain.on('get-forfaits', (event)=>{ 
     apiForfait.getForfaits().then(
         res=>{
-           event.reply('get-forfaits-reply', res.statusCode<400)
+           event.reply('get-forfaits-reply',true)
         }).catch(err =>{
-
+            console.log(err)
         })
 });
 

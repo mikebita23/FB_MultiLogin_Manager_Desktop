@@ -3,7 +3,7 @@ const {
     BrowserWindow,
     dialog
 } = require('electron');
-require('./app copy/eventHandler')
+require('./app/eventHandler')
 
 global.__userDataDir = app.getPath("userData");
 
