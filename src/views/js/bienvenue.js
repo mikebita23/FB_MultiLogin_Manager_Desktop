@@ -4,9 +4,11 @@ window.$ = window.jQuery = require("../../../node_modules/jquery/dist/jquery");
 var myApp = angular.module('myApp', []);
 
 myApp.controller('sessionController', function ($scope, $http) {
+    
     $scope.openSession = id => {
         ipcRenderer.send('open-session', id);
     }
+
     $http({
         method: 'GET',
         url: './sessions.json'

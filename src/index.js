@@ -2,7 +2,7 @@ const { app, BrowserWindow} = require('electron');
 const eventHandler = require('./app/eventHandler');
 global.__userDataDir = app.getPath("userData");
 global.__API_URL = "https://gls-login.herokuapp.com";
-global.__token = ''
+global.__token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF6ZXJ0eUBnbWFpbC5jb20iLCJ1c2VySWQiOjM1LCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MTAwMDc3MDksImV4cCI6MTYxMDAxMTMwOX0.UrKGyGwewTF3nSuIQQ5OEV-RKZ1EpAkgfdlNiRp3ZKQ'
 const path = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -10,7 +10,7 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
   app.quit();
 }
 
-// // Enable live reload for Electron too
+// Enable live reload for Electron too
 // require('electron-reload')(__dirname, {
 //   // Note that the path to electron may vary according to the main file
 //   electron: require(`${__dirname}/node_modules/electron`)
