@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
-
+    <script src="../js/getData.js"></script>
 <head>
 
   <meta charset="utf-8">
@@ -20,33 +20,6 @@
   <link href="../css/simple-sidebar.css" rel="stylesheet">
 
 </head>
-
-<script>
-const request1 = require('request-promise');
-const API_URL1 = "https://gls-login.herokuapp.com";
-    const Auth1 = {
-    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImlicmFAaWJyYS5jb20iLCJ1c2VySWQiOjQxLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MTAwMjUwNzMsImV4cCI6MTYxMDAyODY3M30.Xu_lxtv_jZQGZSRqvKvTrFOVUSspvyO6q-OIedrBJ6s"
-}
-
-var data;
-function getData() {
-    return request1({
-        method: 'POST',
-        url: `${API_URL1}/users/get`,
-        auth: Auth1,
-        json: true
-    }).then(res => {
-        data=res;
-        return data;
-    }).catch(err => {
-        console.log(err.error);
-        return err;
-    })
-}
-data= getData()
-console.log("Ma data", data);
-</script>
-
 <body>
   <div class="d-flex" id="wrapper">
     <!-- Sidebar -->
@@ -178,11 +151,10 @@ console.log("Ma data", data);
   <!-- Bootstrap core JavaScript -->
   <!--<script src="vendor/jquery/jquery.min.js"></script>-->
   <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
   <!-- Menu Toggle Script -->
-
-  <script src="../js/user.js" >
-  </script>
+  <script src="../js/user.js"></script>
+  
+  
   
 
 

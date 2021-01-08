@@ -15,7 +15,6 @@ function getData() {
         auth: Auth1,
         json: true
     }).then(res => {
-       
         data=res;
         return data;
     }).catch(err => {

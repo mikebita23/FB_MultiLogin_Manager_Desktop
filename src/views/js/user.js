@@ -8,8 +8,10 @@ var lastName =document.getElementById("nom")
 var email=  document.getElementById("inputEmail");
 var  phoneNumber= document.getElementById("tel");
 var  passWord= document.getElementById("inputPassword")
+var  passWordConf= document.getElementById("inputConfirmPassword")
+
 const Auth = {
-    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImlicmFAaWJyYS5jb20iLCJ1c2VySWQiOjQxLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MTAwMjUwNzMsImV4cCI6MTYxMDAyODY3M30.Xu_lxtv_jZQGZSRqvKvTrFOVUSspvyO6q-OIedrBJ6s"
+    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImlicmFAaWJyYS5jb20iLCJ1c2VySWQiOjQxLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjEwMTEyNjE5LCJleHAiOjE2MTAxMTYyMTl9.aGOFh-59PpGHLPO61P8ThwADjdob9S6Y0r7f92iD-I0"
 }
 var data;
 
@@ -33,17 +35,12 @@ data= getData()
 
     $('#modification').on('click', _ =>{
         console.log(data.firstName, data.lastName);
-        if(!email.value && !passWord.value && !phoneNumber.value
-            && !lastName.value && !firstName.value ){
-            ipcRenderer.send('update-user', { 
-                email: (data.email),
-                passWord:  (data.passWord),
-                phoneNumber: (data.phoneNumber),
-                lastName: (data.lastName),
-                firstName: (data.firstName)
-                })//; 
+        if((!passWord.value && !passWordConf.value)  ){
+           alert("Veuillez sair le mot de passe")
             
-                console.log("mail vide");
+
+          }else if((passWord.value && passWordConf.value) &&(passWord.value != passWordConf.value)){
+              alert("Les mots ne correspondent pas");
           }
       else {     
             ipcRenderer.send('update-user', { 
@@ -60,7 +57,7 @@ data= getData()
 ipcRenderer.on('update-user-reply', (_, res) => {
     if (res) {
         console.log(data)
-        window.location.href = '../html/bienvenue.html'
+        window.location.href = './html/bienvenue.html'
     } 
 });
 

@@ -17,11 +17,7 @@ myApp.controller('sessionController', function ($scope, $http) {
         });
 });
 
-
-
-
 $.when($.ready).then(_ =>{ 
-
     $('#messageButton').on('click', _ =>{
         $("#messageButton").prop("disabled", true);
         ipcRenderer.send('send-message', { Object: $('input[name=flexRadioDefault]:checked').val(), Content: $('#areaContenu').val()})//
@@ -36,19 +32,12 @@ ipcRenderer.on('send-message-reply', (_, res) => {
     }
 });
 
-
-
-
-
-
-
 $("#menu-toggle").on('click', function (e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
 });
 
 const shell = require('electron').shell;
-
 // assuming $ is jQuery
 $(document).on('click', 'a[href^="http"]', function (event) {
     event.preventDefault();
