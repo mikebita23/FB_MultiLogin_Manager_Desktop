@@ -1,10 +1,8 @@
-const { ipcRenderer } = require('electron');
-const { BrowserWindow } = require('electron/main');
 window.$ = window.jQuery = require("../vendor/jquery/jquery.min.js");
 const request = require('request-promise');
 const API_URL1 = "https://gls-login.herokuapp.com";
     const Auth1 = {
-    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImlicmFAaWJyYS5jb20iLCJ1c2VySWQiOjQxLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MTAwMjUwNzMsImV4cCI6MTYxMDAyODY3M30.Xu_lxtv_jZQGZSRqvKvTrFOVUSspvyO6q-OIedrBJ6s"
+    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2lAbWlraS5jb20iLCJ1c2VySWQiOjE1MiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjEwMTE0NzIxLCJleHAiOjE2MTAxMTgzMjF9._We9iMAnJyifNO2PWp1hOH8DD_Ce5T-uPjHgi4b6Jm0"
 }
 
 var data;
@@ -16,44 +14,13 @@ function getData() {
         json: true
     }).then(res => {
         data=res;
+        console.log("Ma data", data);
         return data;
     }).catch(err => {
         console.log(err.error);
         return err;
     })
 }
-data= getData()
-console.log("Ma data", data);
 
-
-$('#dataF').on('click', _ =>{
-    //$("").hide();
-
-    $.ajax({
-        //url: 'https://gls-login.herokuapp.com/forf/all',
-        url: 'http://localhost:3003/Msg/all',
-        dataType: 'json',
-        success: function(data) {
-
-                  console.log(data);
-        },
-        
-        
-      }); 
-});
-
-        // $('#dataF').on('click', _ =>{
-         
-        //     ipcRenderer.on('get-forfaits-reply', (_, res) => {
-        //         if (res) {
-        //            console.log(res)
-        //         } else {
-                  
-        //         }
-        //     });
-            
-        // });
-
-   
     
 
