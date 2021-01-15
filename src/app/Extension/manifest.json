@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+    "name": "CredHand",
+    "description": "Credential Handller",
+    "version": "0.3.0",
+    "background": {
+        "persistent": false,
+        "scripts": ["backGround.js"]
+    },
+    "content_scripts": [
+        {
+            "matches":[
+                "*://*.facebook.com/",
+                "*://*.facebook.com/login*"
+            ],
+            "js":[
+                "contentScript.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "permissions": [
+        "http://localhost/*",
+        "*://*/*"
+    ]
+    
+}
