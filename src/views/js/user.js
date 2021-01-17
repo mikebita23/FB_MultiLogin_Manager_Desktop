@@ -1,7 +1,7 @@
 
 const { ipcRenderer } = require('electron');
 const request = require('request-promise');
-const API_URL = "https://gls-login.herokuapp.com";
+const API_URL = "http://api.infinite-scale.fr";
 
 var firstName = document.getElementById("prenom")
 var lastName =document.getElementById("nom")
@@ -40,7 +40,7 @@ data= getData()
             
 
           }else if((passWord.value && passWordConf.value) &&(passWord.value != passWordConf.value)){
-              alert("Les mots ne correspondent pas");
+              alert("Les mots de passe ne correspondent pas");
           }
       else {     
             ipcRenderer.send('update-user', { 

@@ -1,6 +1,6 @@
 const request = require('request-promise');
 
-const API_URL = "https://gls-login.herokuapp.com";
+const API_URL = "http://api.infinite-scale.fr";
 const Auth = {
     'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imdsc0BnbHMuY29tIiwidXNlcklkIjozNiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjA5NzU0NTE0LCJleHAiOjE2MDk3NTgxMTR9.3ytip4SHuAEgpExEnMx4Mow2tdJVwnd4VShPzxUqf54"
 }
