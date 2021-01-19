@@ -2,13 +2,17 @@
 <html lang="en">
 
   <script>
+var basique= document.getElementById("basique")
+var normal= document.getElementById("normal")
+var moyen= document.getElementById("moyen")
+var superieur= document.getElementById("superieur")
     const request2 = require('request-promise');
-    const API_URL2 = "https://gls-login.herokuapp.com";
+    const API_URL2 = "http://api.infinite-scale.fr";
         const Auth2 = {
-        'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2lAbWlraS5jb20iLCJ1c2VySWQiOjE1MiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjEwMTE0NzIxLCJleHAiOjE2MTAxMTgzMjF9._We9iMAnJyifNO2PWp1hOH8DD_Ce5T-uPjHgi4b6Jm0"
+        'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF6ZXJ0eUBnbWFpbC5jb20iLCJ1c2VySWQiOjUsImlzQWRtaW4iOnRydWUsImlhdCI6MTYxMDk2MzY4MywiZXhwIjoxNjEwOTY3MjgzfQ.wR8ppPSxoNJSssLeUWSahOT2zXNklImHP_pHGNyTXJE"
     }
     
-    var data;
+  var data
     function getData() {
         return request2({
             method: 'GET',
@@ -18,14 +22,26 @@
         }).then(res => {
            
             data=res;
-            return data;
+            console.log("Ma data", data);
+            return data.map(d => {
+              console.log(`${d.nom}&nbsp;&nbsp;&nbsp ${d.description}&nbsp;&nbsp;&nbsp${d.prix} `);
+                //   basique.innerHTML+= `${d.nom}&nbsp;&nbsp;&nbsp ${d.description}&nbsp;&nbsp;&nbsp${d.prix} `;
+                //   moyen.innerHTML+= `${d.nom}&nbsp;&nbsp;&nbsp ${d.description}&nbsp;&nbsp;&nbsp${d.prix} `;
+                //   normal.innerHTML+= `${d.nom}&nbsp;&nbsp;&nbsp ${d.description}&nbsp;&nbsp;&nbsp${d.prix} `;
+                //   superieur.innerHTML+= `${d.nom}&nbsp;&nbsp;&nbsp ${d.description}&nbsp;&nbsp;&nbsp${d.prix} `
+                }
+               
+                ).join('') ;
         }).catch(err => {
             console.log(err.error);
             return err;
         })
+        console.log(" Donnee"+ data);
     }
-    data= getData()
-    console.log("Ma data", data);
+    getData();
+   
+   
+   
     </script>
 
 
@@ -53,35 +69,50 @@
                 <h1 id="texte_white">Nos forfaits</h1><br>
                 <div class="row">
                   <div class="col" id="backg_white">
-                    <p><h5><b>Forfait <br>basique</b></h5></p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p><br><br><br><br>
-                    <div class="text-center">
-                        <button id="dataF" type="submit" class="btn btn-success">Choisir ce forfait1</button>
-                    </div>
-                    <br>
+                      <div id="basique">
+                        <p><h5><b>Forfait <br>platium </b></h5></p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p><br><br><br><br>
+                        <div class="text-center">
+                            <button id="dataF" type="submit" class="btn btn-success">Choisir ce forfait1</button>
+                        </div>
+                        <br>
+                      </div>
+                   
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="col" id="backg_white">
-                    <p><h5><b>Forfait <br>platium </b></h5></p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p><br><br><br><br>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-success">Choisir ce forfait</button>
-                    </div>
-                    <br>
+                      <div  id="moyen">
+                        <p><h5><b>Forfait <br>platium </b></h5></p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p><br><br><br><br>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success">Choisir ce forfait</button>
+                        </div>
+                        <br>
+                      </div>
+                   
+                </div>&nbsp;&nbsp;&nbsp;
+
+                  <div class="col" id="backg_white">
+                      <div id ="normal">
+                        <p><h5><b>Forfait <br>premium</b></h5></p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p><br><br><br><br>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success">Choisir ce forfait</button>
+                        </div>
+                        <br>
+
+                      </div>
+                   
                 </div>&nbsp;&nbsp;&nbsp;
                   <div class="col" id="backg_white">
-                    <p><h5><b>Forfait <br>premium</b></h5></p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p><br><br><br><br>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-success">Choisir ce forfait</button>
-                    </div>
-                    <br>
-                </div>&nbsp;&nbsp;&nbsp;
-                  <div class="col" id="backg_white">
-                    <p><h5><b>Forfait <br>liberté</b></h5></p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p><br><br><br><br>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-success">Choisir ce forfait</button>
-                    </div>
+                      <div id="superieur">
+                        <p><h5><b>Forfait <br>liberté</b></h5></p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p><br><br><br><br>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success">Choisir ce forfait</button>
+                        </div>
+
+                      </div>
+                   
                 </div>
                 </div>
             </div>

@@ -11,7 +11,7 @@ var  passWord= document.getElementById("inputPassword")
 var  passWordConf= document.getElementById("inputConfirmPassword")
 
 const Auth = {
-    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImlicmFAaWJyYS5jb20iLCJ1c2VySWQiOjQxLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjEwMTE1MzQ0LCJleHAiOjE2MTAxMTg5NDR9.BuQnKmPUcoINP9Yc3djT792axEzdno1jHnNfsGZBeZc"
+    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF6ZXJ0eUBnbWFpbC5jb20iLCJ1c2VySWQiOjUsImlzQWRtaW4iOnRydWUsImlhdCI6MTYxMDk1ODA3NSwiZXhwIjoxNjEwOTYxNjc1fQ.0U2904bvGZbXQZo3V6FoKJGcA8hM4_B1gAabWUPSbMM"
 }
 var data;
 

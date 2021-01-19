@@ -1,15 +1,19 @@
 window.$ = window.jQuery = require("../vendor/jquery/jquery.min.js");
 const request = require('request-promise');
 const API_URL1 = "http://api.infinite-scale.fr";
-    const Auth1 = {
-    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2lAbWlraS5jb20iLCJ1c2VySWQiOjE1MiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjEwMTE0NzIxLCJleHAiOjE2MTAxMTgzMjF9._We9iMAnJyifNO2PWp1hOH8DD_Ce5T-uPjHgi4b6Jm0"
+const apiUsers = "http://api.infinite-scale.fr/users/all"
+
+const Auth1 = {
+    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF6ZXJ0eUBnbWFpbC5jb20iLCJ1c2VySWQiOjUsImlzQWRtaW4iOnRydWUsImlhdCI6MTYxMDk2MDA0MCwiZXhwIjoxNjEwOTYzNjQwfQ.e0J4yc1T5YAmNiZyVyAgvS92EP3_LjiPKSLlFh0xeCM"
 }
 
 var data;
+
+
 function getData() {
     return request({
         method: 'GET',
-        url: `${API_URL1}/forf/all`,
+        url: `${API_URL1}/users/all`,
         auth: Auth1,
         json: true
     }).then(res => {
@@ -22,5 +26,9 @@ function getData() {
     })
 }
 
+
+$('#dataF').on('click', _ =>{
+getData();  
+})
     
 
