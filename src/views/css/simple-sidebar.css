@@ -9,7 +9,7 @@
 }
 
 #backg_blue{
-  background: rgb(15, 76, 246);
+  background: rgb(34, 31, 231);
 }
 
 #backg_white{
@@ -88,7 +88,7 @@
  /*width: auto; */
 }
 
-a:link 
+a:link
 { 
  text-decoration:none; 
 }
@@ -98,6 +98,24 @@ a:link
   color:white;
   width: 45%;;
   padding: 10px;
+  /*font-size: 0.9em;*/
+}
+
+.session{
+  background-color:rgb(34, 31, 231);
+  color:white;
+  /*font-size: 0.9em;*/
+}
+
+.valide{
+  background-color:#39cf87;
+  color:white;
+  /*font-size: 0.9em;*/
+}
+
+.danger{
+  background-color:#eb536d;
+  color:white;
   /*font-size: 0.9em;*/
 }
 
@@ -112,13 +130,18 @@ a:link
 }
 
 .lateral{
-  background: rgb(15, 76, 246);
+  background: rgb(34, 31, 231);
 }
 
 .fond_bleu{
-  background: rgb(15, 76, 246);
+  background: rgb(34, 31, 231);
 }
 
 .radius{
   border-radius: 10px;
+}
+
+#bas{
+  position: absolute;
+  bottom: 0;
 }

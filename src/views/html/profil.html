@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Page de bienvenue</title>
+  <title>Profil</title>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -26,12 +26,15 @@
   <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
-    <div class="bg-primary border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading" id="texte_white"><b>LOGO</b></div>
+    <div class="lateral border-right" id="sidebar-wrapper">
+      <!-- <div class="sidebar-heading" id="texte_white"><b>LOGO</b></div> -->
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-primary" id="texte_white"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;PauL RAND</a>
-        <a href="./bienvenue.html" class="list-group-item list-group-item-action bg-primary" id="texte_white">Accueil</a>
-        <a href="./index.html" class="list-group-item list-group-item-action bg-primary" id="texte_white">Se deconnecter</a>
+        <a href="#" class="list-group-item fond_bleu" id="texte_white"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;PauL RAND</a>
+        <a href="./index.html">&nbsp;&nbsp;&nbsp;&nbsp;<button type="button"
+            class="btn btn-primary" id="texte_white">Se deconnecter</button>
+        </a>
+        <br><br><br><br><br><br><br>
+        <a href="./bienvenue.html" class="list-group-item fond_bleu" id="texte_white">Accueil&nbsp;&nbsp;<i class="fa fa-home" aria-hidden="true"></i></a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -62,7 +65,7 @@
                                         Nom
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" id="prenom" class="form-control" placeholder="Nom" required autofocus>
+                                        <input type="text" id="prenom" class="form-control" placeholder="Nom">
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +76,7 @@
                                         Prénom
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" id="nom" class="form-control" placeholder="Prénom" required autofocus>
+                                        <input type="text" id="nom" class="form-control" placeholder="Prénom">
                                     </div>
                                 </div>
                             </div>
@@ -84,7 +87,7 @@
                                         Email
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" id="inputEmail" class="form-control" placeholder="Adresse e-mail" required autofocus>
+                                        <input type="text" id="inputEmail" class="form-control" placeholder="Adresse e-mail">
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +98,7 @@
                                         Tél
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" id="inputEmail" class="form-control" placeholder="téléphone" required autofocus>
+                                        <input type="text" id="inputEmail" class="form-control" placeholder="téléphone">
                                     </div>
                                 </div>
                             </div>
@@ -106,7 +109,7 @@
                                         Nouveau mot de passe
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="password" id="inputPassword" class="form-control" placeholder="Saisissez votre mot de passe" required>
+                                        <input type="password" id="inputPassword" class="form-control" placeholder="Saisissez votre mot de passe">
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +120,7 @@
                                         Confirmer mot de passe
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirmer votre mot de passe" required>
+                                        <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirmer votre mot de passe">
                                     </div>
                                 </div>
                             </div>
@@ -126,13 +129,13 @@
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-md-5">
-                                            <a href="bienvenue.html"><button type="button" id="inscription" onclick="myFunction()"  class="btn btn-danger">valider</button></a>
+                                            <a href="bienvenue.html"><button type="button" id="inscription" onclick="myFunction()"  class="btn danger">annuler</button></a>
                                         </div>
                                         <div class="col-md-2">
                                     
                                         </div>
                                         <div class="col-md-5">
-                                            <button type="submit" id="modiification" onclick="myFunction()"  class="btn btn-success">valider</button>
+                                            <button type="submit" id="modiification" onclick="myFunction()"  class="btn valide">valider</button>
                                         </div>
                                     </div>
                                 </div>     

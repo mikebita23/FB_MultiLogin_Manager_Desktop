@@ -27,7 +27,7 @@ const createWindow = () => {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, './views/html/index.html'));
+  mainWindow.loadFile(path.join(__dirname, './views/html/forfait.html'));
   /*mainWindow.webContents.openDevTools()*/
 
   // Open the DevTools.
