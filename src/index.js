@@ -1,8 +1,8 @@
 const { app, BrowserWindow} = require('electron');
 const eventHandler = require('./app/eventHandler');
 global.__userDataDir = app.getPath("userData");
-global.__API_URL = "https://gls-login.herokuapp.com";
-global.__token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF6ZXJ0eUBnbWFpbC5jb20iLCJ1c2VySWQiOjM1LCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MTAwMDc3MDksImV4cCI6MTYxMDAxMTMwOX0.UrKGyGwewTF3nSuIQQ5OEV-RKZ1EpAkgfdlNiRp3ZKQ'
+global.__API_URL = "http://api.infinite-scale.fr";
+global.__token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pZGFsQGdtYWlsLmNvbSIsInVzZXJJZCI6MSwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjExNTg4NjQ3LCJleHAiOjE2MTE1OTIyNDd9.IT_eKNsywebvdWfoeLwXLyuOYsmjokVv7tFApzRO4Xs'
 const path = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.

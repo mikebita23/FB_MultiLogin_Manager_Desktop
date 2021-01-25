@@ -59,6 +59,7 @@
     }
   },
   "dependencies": {
+    "archiver": "^5.2.0",
     "bootstrap": "^4.5.3",
     "chromium": "^3.0.2",
     "electron-squirrel-startup": "^1.0.0",
