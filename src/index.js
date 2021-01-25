@@ -1,9 +1,37 @@
+/**
+ * @module 
+ * @name Main-Electron-App
+ * @description the main electron script wich is executed when launching the app
+ */
+
 const { app, BrowserWindow} = require('electron');
 const eventHandler = require('./app/eventHandler');
-global.__userDataDir = app.getPath("userData");
-global.__API_URL = "https://gls-login.herokuapp.com";
-global.__token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF6ZXJ0eUBnbWFpbC5jb20iLCJ1c2VySWQiOjM1LCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MTAwMDc3MDksImV4cCI6MTYxMDAxMTMwOX0.UrKGyGwewTF3nSuIQQ5OEV-RKZ1EpAkgfdlNiRp3ZKQ'
-const path = require('path');
+
+/**
+ * @global
+ * @name __userDataDir
+ * @description global variable containg the main app directory
+ */
+
+ global.__userDataDir = app.getPath("userData");
+
+/**
+ * @global
+ * @name __API_URL
+ * @description global variable containg API url
+ */
+
+ global.__API_URL = "https://gls-login.herokuapp.com";
+
+/**
+ * @global
+ * @name __token
+ * @description global variable containg the token wich will be used when communicating with the API
+ */
+
+ global.__token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF6ZXJ0eUBnbWFpbC5jb20iLCJ1c2VySWQiOjM1LCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MTAwMDc3MDksImV4cCI6MTYxMDAxMTMwOX0.UrKGyGwewTF3nSuIQQ5OEV-RKZ1EpAkgfdlNiRp3ZKQ'
+
+ const path = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
