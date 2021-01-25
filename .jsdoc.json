@@ -11,7 +11,7 @@
 
     "opts": {
         "encoding": "utf8",
-        "destination": "docs/",
+        "destination": "Documentation/",
         "recurse": true,
         "verbose": true,
         "template": "node_modules/better-docs"
