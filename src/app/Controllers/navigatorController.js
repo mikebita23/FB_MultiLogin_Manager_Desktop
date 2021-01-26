@@ -46,7 +46,7 @@ module.exports = {
     /**
      * Create a proxy chain to use the anonymized proxy instead of of luminaty proxy and launch chrommium session 
      * @param {Number} id Session's Id
-     * @see API:proxy
+     * @see API.proxy
      */
 
      open: (id) => {
@@ -59,7 +59,7 @@ module.exports = {
                     setProcessCommand({
                         cmd: Navigator.path,
                         proxy: prx,
-                        dir: path.join(__userDataDir, 'navSessions', `session-${id}`)
+                        dir: path.join(__userDataDir, 'navSessions', `${id}`)
                     }),
                     (err, stdout, stderr) => {
                         proxyChain.closeAnonymizedProxy(prx);

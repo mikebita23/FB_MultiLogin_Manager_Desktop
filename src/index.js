@@ -6,6 +6,7 @@
 
 const { app, BrowserWindow} = require('electron');
 const eventHandler = require('./app/eventHandler');
+const path = require('path');
 
 /**
  * @global
@@ -13,25 +14,10 @@ const eventHandler = require('./app/eventHandler');
  * @description global variable containg the main app directory
  */
 
- global.__userDataDir = app.getPath("userData");
+global.__userDataDir = app.getPath("userData");
 
-/**
- * @global
- * @name __API_URL
- * @description global variable containg API url
- */
+require('./globalVars')
 
- global.__API_URL = "http://api.infinite-scale.fr";
-
-/**
- * @global
- * @name __token
- * @description global variable containg the token wich will be used when communicating with the API
- */
-
- global.__token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pZGFsQGdtYWlsLmNvbSIsInVzZXJJZCI6MSwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjExNjUwMjA0LCJleHAiOjE2MTE2NTM4MDR9.u4da9x5e9wWOfIz6aYx6dls-fAmcbG5HCCeMpokqtuY'
-
- const path = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require

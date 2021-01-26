@@ -9,6 +9,10 @@ myApp.controller('sessionController', function ($scope, $http) {
         ipcRenderer.send('open-session', id);
     }
 
+    $scope.exportSession = id =>{
+        ipcRenderer.send('export-session', id);
+    }
+
     $http({
         method: 'GET',
         url: './sessions.json'

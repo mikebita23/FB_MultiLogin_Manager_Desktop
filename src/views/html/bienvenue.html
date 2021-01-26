@@ -67,7 +67,8 @@
             <div ng-repeat="session in sessions | filter:search">
               <b>{{session.name}}</b>&nbsp;&nbsp;<a data-toggle="collapse" href="#myButton{{$index}}" ng-click="getApps(session)" title="renommer"><i class="fa fa-pencil" aria-hidden="true"></i></a></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <a title="envoyer un message" data-toggle="modal" href="#isButton" ng-click="getApps(session)"><i class="fa fa-envelope TEXT-right" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+              <a title="Exporter la session"  href="#" ng-click="exportSession(session.id)"><i class="fa fa-share-square " aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              
 
               <!-- Button trigger modal
               <button type="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">

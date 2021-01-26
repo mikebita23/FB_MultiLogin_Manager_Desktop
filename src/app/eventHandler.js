@@ -6,8 +6,8 @@
  */
 
 const { ipcMain } = require('electron');
-const nav = require('./Controllers/navigatorController')
-const API = require('./API/proxy')
+const openNav = require('./Controllers/navigatorController').open
+const save = require('./Controllers/exportController').export
 
 
 /** 
@@ -21,7 +21,12 @@ ipcMain.on('open-session', (e, idSession)=>{
     // console.log(__filename,' ===> openning a session with id : ',idSession);
     // nav.open(idSession)
     // console.log(__filename,' ===> session with id : ',idSession,'is closed');
-    nav.open(idSession)
+    openNav(idSession)
+})
+
+
+ipcMain.on('export-session', (e, idSession) =>{
+    save(idSession)
 })
 
 // ipcMain.on('ask-for-auth', (event, args) =>{
