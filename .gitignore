@@ -90,3 +90,6 @@ out/
 
 #electron-builder
 dist/
+
+# code documentation
+Documentation/

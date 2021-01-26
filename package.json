@@ -10,7 +10,8 @@
     "make": "electron-forge make",
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\"",
-    "buildInstaller": "electron-builder"
+    "buildInstaller": "electron-builder",
+    "generate-docs": "jsdoc --configure .jsdoc.json --verbose"
   },
   "build": {
     "appId": "infinite-scaling",
@@ -73,6 +74,7 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.54",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
     "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "better-docs": "^2.3.2",
     "electron": "11.0.3",
     "electron-builder": "^22.9.1",
     "electron-reload": "^1.5.0"

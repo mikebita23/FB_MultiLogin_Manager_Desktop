@@ -1,9 +1,37 @@
+/**
+ * @module 
+ * @name Main-Electron-App
+ * @description the main electron script wich is executed when launching the app
+ */
+
 const { app, BrowserWindow} = require('electron');
 const eventHandler = require('./app/eventHandler');
-global.__userDataDir = app.getPath("userData");
-global.__API_URL = "http://api.infinite-scale.fr";
-global.__token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pZGFsQGdtYWlsLmNvbSIsInVzZXJJZCI6MSwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjExNTg4NjQ3LCJleHAiOjE2MTE1OTIyNDd9.IT_eKNsywebvdWfoeLwXLyuOYsmjokVv7tFApzRO4Xs'
-const path = require('path');
+
+/**
+ * @global
+ * @name __userDataDir
+ * @description global variable containg the main app directory
+ */
+
+ global.__userDataDir = app.getPath("userData");
+
+/**
+ * @global
+ * @name __API_URL
+ * @description global variable containg API url
+ */
+
+ global.__API_URL = "http://api.infinite-scale.fr";
+
+/**
+ * @global
+ * @name __token
+ * @description global variable containg the token wich will be used when communicating with the API
+ */
+
+ global.__token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pZGFsQGdtYWlsLmNvbSIsInVzZXJJZCI6MSwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjExNjUwMjA0LCJleHAiOjE2MTE2NTM4MDR9.u4da9x5e9wWOfIz6aYx6dls-fAmcbG5HCCeMpokqtuY'
+
+ const path = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
