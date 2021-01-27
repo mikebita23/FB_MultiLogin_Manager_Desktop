@@ -1,38 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--
 
   <script>
-
-    const request2 = require('request-promise');
-    const API_URL2 = "http://api.infinite-scale.fr";
-        const Auth2 = {
-        'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJlbkB5YWhvby5jb20iLCJ1c2VySWQiOjEwMDYsImlzQWRtaW4iOnRydWUsImlhdCI6MTYxMTA0ODkwMiwiZXhwIjoxNjExMDUyNTAyfQ.kTux5yaPOKpYuHi3dPC_79apQ_Ah9gtADaATkQWbD2I"
-    }
-
-    var data;
-    function getData() {
-        return request2({
-            method: 'GET',
-            url: `${API_URL2}/forf/all`,
-            auth: Auth2,
-            json: true
-        }).then(res => {
-
-            data=res;
-            return console.log(data);
-        }).catch(err => {
-            console.log(err.error);
-            return err;
-        })
-    }
-    data= getData()
-    console.log("Ma data", data);
-
-  </script>
-
--->
-
+        const request2 = require('request-promise');
+        const API_URL2 = "http://api.infinite-scale.fr";
+            const Auth2 = {
+            'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2VAbWlrZS5jb20iLCJ1c2VySWQiOjIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYxMTMwNjE1NSwiZXhwIjoxNjExMzA5NzU1fQ.J2M3Ho6kzK4wGrgAyz4dqqvsPmtYXNG6IrPecc62EG8"
+        }
+        
+      var data
+        function getData() {
+            return request2({
+                method: 'GET',
+                url: `${API_URL2}/forf/all`,
+                auth: Auth2,
+                json: true
+            }).then(res => {
+               
+                data=res;
+                console.log("Ma data", data);
+                return data.map(d => {
+                  console.log(`${d.nom}&nbsp;&nbsp;&nbsp ${d.description}&nbsp;&nbsp;&nbsp${d.prix} `);
+                    //   basique.innerHTML+= `${d.nom}&nbsp;&nbsp;&nbsp ${d.description}&nbsp;&nbsp;&nbsp${d.prix} `;
+                    //   moyen.innerHTML+= `${d.nom}&nbsp;&nbsp;&nbsp ${d.description}&nbsp;&nbsp;&nbsp${d.prix} `;
+                    //   normal.innerHTML+= `${d.nom}&nbsp;&nbsp;&nbsp ${d.description}&nbsp;&nbsp;&nbsp${d.prix} `;
+                    //   superieur.innerHTML+= `${d.nom}&nbsp;&nbsp;&nbsp ${d.description}&nbsp;&nbsp;&nbsp${d.prix} `
+                    }
+                   
+                    ).join('') ;
+            }).catch(err => {
+                console.log(err.error);
+                return err;
+            })
+            console.log(" Donnee"+ data);
+        }
+        getData();
+       
+       
+       
+        </script>
+    
+    
 
 <head>
 
