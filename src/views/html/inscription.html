@@ -3,18 +3,40 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <title>Inscription</title>
+    <title>Inscription</title>
 
-  <!-- Bootstrap core CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <!-- Custom styles for this template -->
-  <link href="../css/simple-sidebar.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Custom styles for this template -->
+    <link href="../css/simple-sidebar.css" rel="stylesheet">
+    <script>
+        window.$ = window.jQuery = require("../../../node_modules/jquery/dist/jquery.min.js");
+    </script>
+
+
+
+
+    <script type="text/javascript"> 
+        function validate() { 
+            var msg; 
+            var str = document.getElementById("inputPassword").value; 
+            if (str.match( /[0-9]/g) && 
+                    str.match( /[A-Z]/g) && 
+                    str.match(/[a-z]/g) && 
+                    str.match( /[^a-zA-Z\d]/g) &&
+                    str.length >= 10) 
+                msg = "<p style='color:green'>Mot de passe fort.</p>"; 
+            else 
+                msg = "<p style='color:red'>Mot de passe faible.</p>"; 
+            document.getElementById("msg").innerHTML= msg; 
+        } 
+    </script> 
 
 </head>
 
@@ -26,54 +48,64 @@
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <div class="card card-signin my-5">
                     <div class="card-body">
-                        <h5 class="card-title text-center"><b>S'inscrire</b></h5>
-                        <form class="form-signin" action="./bienvenue.html">
-                            <div class="form-label-group">
-                                <br>
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="text" id="prenom" class="form-control" placeholder="Prénom">
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" id="nom" class="form-control" placeholder="Nom">
+                        <h5 class="text-center btn-light text-blue"><b>S'inscrire</b></h5>
+                        
+                        <form class="form-signin" action="./bienvenue.html" method="POST" onsubmit="return validateForm"()>
+                            <div class="form-group">
+                                <div class="form-label-group">
+                                    <br>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="text" id="prenom" class="form-control" pattern=".{2,}" placeholder="Prénom" required autofocus>
+                                            <span name="prenomerror" class="text-danger font-weight-bold"></span>
+                                        </div>
+
+                                        <div class="col">
+                                            <input type="text" id="nom" class="form-control" pattern=".{2,}" placeholder="Nom" required autofocus>
+                                            <span name="nomerror" class="text-danger font-weight-bold"></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-label-group">
-                                <br>
-                                <input type="text" id="inputEmail" class="form-control" placeholder="Adresse e-mail">
-                            </div>
-                            <div class="form-label-group">
-                                <br>
-                                <input type="text" id="inputEmail" class="form-control" placeholder="téléphone">
-                            </div>
-                            <div class="form-label-group">
-                                <br>
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Saisissez votre mot de passe">
-                                <br>
-                            </div>
-                            <div class="form-label-group">
-                                <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirmer votre mot de passe">
-                                <br>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" id="inscription" onclick="myFunction()"  class="btn valider">valider</button>
-                            </div>
-                            <div class="text-center">
-                                déjà inscrit ? <a href="./index.html"><b>Connectez-vous</b></a>
-                            </div>
+
+
+                                <div class="form-label-group">
+                                    <br>
+                                    <input type="text" id="inputEmail" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              title="Format mail incorrecte ex: forge@empire.com" placeholder="Adresse e-mail ou téléphone" required autofocus>
+                                    <span name="emailerror" class="text-danger font-weight-bold"></span>
+                                </div>
+
+                                <div class="form-label-group">
+                                    <br>
+                                    <input type="password" id="inputPassword" class="form-control"  
+              title="8 caractères, au moins une majuscule (uppercase) et au moins une minuscule (lowercase)." pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Saisissez votre mot de passe" required>
+                                    <span name="passworderror" class="text-danger font-weight-bold"></span>
+                                    <br>
+                                </div>
+
+
+                                <div class="form-label-group" onsubmit="check_Password(this)">
+                                    <input type="password" id="inputConfirmPassword" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              title="La confirmation de mot de passe doit être conforme au mot de passe." placeholder="Confirmer votre mot de passe" required>
+
+                                    <br>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" id="save" class="btn btn-success">valider</button>
+                                </div>
                         </form>
                     </div>
-                 </div>
+                </div>
             </div>
         </div>
     </div>
+    </div>
 
-    <script>
-        function myFunction() {
-            document.getElementById("inscription").click();
-        }
-    </script>
+    <script  src="../js/user.js"></script>
+
+
+    
+    
 </body>
 
 </html>

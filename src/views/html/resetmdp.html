@@ -18,7 +18,6 @@
     <script>
         window.$ = window.jQuery = require("../../../node_modules/jquery/dist/jquery.min.js");
     </script>
-
 </head>
 
 <body id="backg_blue">
@@ -27,10 +26,10 @@
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <div class="card card-signin my-5">
                     <div class="card-body">
-                        <h5 class="card-title text-center"><b>Se connecter</b></h5>
+                        <h5 class="card-title text-center"><b>Réinitialiser Mot de passe</b></h5>
 
 
-                        <form class="form-signin" action="./bienvenue.html" method="GET" action="bienvenue.html" onsubmit="return validateForm()">
+                        <form class="form-signin" action="./index.html" method="GET" onsubmit="return validateForm()">
 
 
                             <div class="form-label-group">
@@ -38,38 +37,35 @@
                                 <input type="text" id="inputEmail" name="inputEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control" placeholder="Adresse e-mail" required autofocus>
                                 <span name="emailerror" class="text-danger font-weight-bold"></span>
                             </div>
+<p class="btn btn-primary">Un mail vous sera envoyé afin de réinitialiser votre mot de passe </p>
 
 
-
-                            <div class="form-label-group">
                                 <br>
-                                <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Saisissez votre mot de passe" required>
-                                <span name="passworderror" class="text-danger font-weight-bold"></span>
-                                <div class="text-right">
-                                    <a href="resetmdp.html" id="mdp_forgot">Mot de passe oublié ?</a>
-                                </div>
-                                <br>
-                                <br>
+                               
                             </div>
 
 
 
                             <div class="text-center">
-                                <button type="button" id="submitButton" onClick="document.location.href='bienvenue.html'" class="btn btn-success">valider</button>
+                                <button type="button" id="submitButton" class="btn btn-success">valider</button>
                             </div>
                             <br>
-                            <br>
+                            
+                            <div class="text-center">
+            <p id="texte_white">Pas encore inscrit ?</p>
+            <a href="./offre.html"><button type="button" class="btn btn-light"><b>essayer gratuitement</b></button></a>
+        </div>
+    </div>
+    <br>
                         </form>
                         <br>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="text-center">
-            <p id="texte_white">Pas encore inscrit ?</p>
-            <a href="./offre.html"><button type="button" class="btn btn-light"><b>essayer gratuitement</b></button></a>
-        </div>
-    </div>
+        
+
+    
 
 </body>
 <script src="../js/index.js"></script>

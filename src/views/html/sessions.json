@@ -3,36 +3,36 @@
         "id": "1",
         "name": "session 1",
         "etat": "Active",
-        "description": "Session en cours"
+        "description": "Session en cours..."
     },
     {
         "id": "2",
         "name": "session 2",
         "etat": "Inactive",
-        "description": "Blocage en cours"
+        "description": "Blocage en cours..."
     },
     {
         "id": "3",
         "name": "session 3",
         "etat": "Active",
-        "description": "Lancer la session"
+        "description": "Lancer la session..."
     },
     {
         "id": "4",
         "name": "session 4",
         "etat": "Active",
-        "description": "Session en cours"
+        "description": "Session en cours..."
     },
     {
         "id": "5",
         "name": "session 5",
         "etat": "Inactive",
-        "description": "Blocage en cours"
+        "description": "Blocage en cours..."
     },
     {
         "id": "6",
         "name": "session 6",
         "etat": "Active",
-        "description": "Session en cours"
+        "description": "Session en cours..."
     }
 ]
