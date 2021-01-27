@@ -96,24 +96,31 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        Nouveau mot de passe
+                                        Password
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="password" id="inputPassword" class="form-control" placeholder="Saisissez votre mot de passe" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-label-group">
+                                <input type="password" id="inputPassword" class="form-control"  
+                                    title="8 caractères, au moins une majuscule (uppercase) et au moins une minuscule (lowercase)." pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Saisissez votre mot de passe" required>
+                                <span name="passworderror" class="text-danger font-weight-bold"></span>
                                 <br>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        Confirmer mot de passe
-                                    </div>
-                                    <div class="col-md-8">
-                                        <input type="password" id="inputConfirmPassword" value="" class="form-control" placeholder="Confirmer votre mot de passe" required>
-                                    </div>
-                                </div>
                             </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    Confirmer
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-label-group" onsubmit="check_Password(this)">
+                                        <input type="password" id="inputConfirmPassword" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                            title="La confirmation de mot de passe doit être conforme au mot de passe." placeholder="Confirmer votre mot de passe" required>
+        
+                                        <br>
+                                    </div>
+                        </div>
+                        </div>
+                            
+
                             <div class="form-label-group">
                                 <br>
                                 <div class="container-fluid">

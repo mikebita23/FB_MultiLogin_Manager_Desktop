@@ -11,7 +11,7 @@ var  passWord= document.getElementById("inputPassword")
 var  passWordConf= document.getElementById("inputConfirmPassword")
 
 const Auth = {
-    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF6ZXJ0eUBnbWFpbC5jb20iLCJ1c2VySWQiOjUsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MTE3NDA2MTEsImV4cCI6MTYxMTc0NDIxMX0.4Ah_hnlccvT-6PhnWyZC8qCNXbPMcpqyXii7f5yiHYg"
+    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmlAZ21haWwuY29tIiwidXNlcklkIjoxMCwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTYxMTc2MzI0MCwiZXhwIjoxNjExNzY2ODQwfQ.ecb0QtKd-gRDXETk7mrnJ9xyFidRAnaPkpIGrVs2XJg"
 }
 var data;
 
@@ -51,7 +51,8 @@ data= getData()
                 email: $(email).val(),
                 phoneNumber: $(phoneNumber).val(),
                 passWord: $(passWord).val()
-                })//;           
+                })//;     
+                window.location.href = '../html/bienvenue.html'      
     }
     });
 
