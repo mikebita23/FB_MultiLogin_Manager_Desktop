@@ -4,7 +4,6 @@ const API_URL1 = "http://api.infinite-scale.fr";
     'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmlAZ21haWwuY29tIiwidXNlcklkIjoxMCwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTYxMTc2MzI0MCwiZXhwIjoxNjExNzY2ODQwfQ.ecb0QtKd-gRDXETk7mrnJ9xyFidRAnaPkpIGrVs2XJg"
 }
 var emailValue;
-var passValue;
 var prenom; 
 var tel;
 var  val
@@ -91,25 +90,11 @@ function getTel() {
         return err;
     })
 }
-function getMotPasse() {
-    return request1({
-        method: 'POST',
-        url: `${API_URL1}/users/get`,
-        auth: Auth1,
-        json: true
-    }).then(res => {
-        passValue=res.passWord;
-        console.log("Ma data", passValue);
-        return document.getElementById('inputPassword').setAttribute('value', passValue)
 
-    }).catch(err => {
-        console.log(err.error);
-        return err;
-    })
-}
- getEmail();
+// Appel des methodes
  getNom();
  getPrenom();
+ getEmail();
  getTel();
- //getMotPasse();
+ 
  

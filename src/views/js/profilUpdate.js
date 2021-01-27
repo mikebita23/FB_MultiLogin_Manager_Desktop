@@ -13,32 +13,11 @@ var  passWordConf= document.getElementById("inputConfirmPassword")
 const Auth = {
     'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmlAZ21haWwuY29tIiwidXNlcklkIjoxMCwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTYxMTc2MzI0MCwiZXhwIjoxNjExNzY2ODQwfQ.ecb0QtKd-gRDXETk7mrnJ9xyFidRAnaPkpIGrVs2XJg"
 }
-var data;
-
-function getData() {
-    return request({
-        method: 'POST',
-        url: `${API_URL}/users/get`,
-        auth: Auth,
-        json: true
-    }).then(res => {
-       
-        data=res;
-        return data;
-    }).catch(err => {
-        console.log(err.error);
-        return err;
-    })
-}
-
-data= getData()
 
     $('#modification').on('click', _ =>{
-        console.log(data.firstName, data.lastName);
+        
         if((!passWord.value && !passWordConf.value)  ){
            alert("Veuillez sair le mot de passe")
-            
-
           }
           else if((passWord.value && passWordConf.value) &&(passWord.value != passWordConf.value)){
               alert("Les mots de passe ne correspondent pas");
@@ -51,20 +30,22 @@ data= getData()
                 email: $(email).val(),
                 phoneNumber: $(phoneNumber).val(),
                 passWord: $(passWord).val()
-                })//;     
-                window.location.href = '../html/bienvenue.html'      
+                })
+                // //Redirige vers Bienvenue    
+                window.location.href = '../html/bienvenue.html'  
     }
     });
 
     
 ipcRenderer.on('update-user-reply', (_, res) => {
     if (res) {
-        console.log(data)
-        window.location.href = './html/bienvenue.html'
-    } 
+      console.log(res)
+    } else{
+       console.log('un champ non saisi')  
+    }
 });
 
-/// Get user 
+
 
 $("#menu-toggle").on('click', function (e) {
     e.preventDefault();

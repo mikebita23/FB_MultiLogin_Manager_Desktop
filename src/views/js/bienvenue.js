@@ -21,14 +21,16 @@ $.when($.ready).then(_ =>{
     $('#messageButton').on('click', _ =>{
         $("#messageButton").prop("disabled", true);
         ipcRenderer.send('send-message', { Object: $('input[name=flexRadioDefault]:checked').val(), Content: $('#areaContenu').val()})//
+      console.log('Message envoyé')
     });
 }),
 
 ipcRenderer.on('send-message-reply', (_, res) => {
     if (res) {
+        console.log(res)
         window.location.href = '../html/bienvenue.html'
     } else {
-        $("#messageButton").prop("disabled", false);
+        console.log('Message non envoyé')
     }
 });
 
