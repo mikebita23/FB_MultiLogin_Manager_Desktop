@@ -1,19 +1,31 @@
-// const { ipcRenderer } = require('electron');
-// window.$ = window.jQuery = require("../vendor/jquery/jquery.min.js");
+const { ipcRenderer } = require('electron');
+window.$ = window.jQuery = require("../../../node_modules/jquery/dist/jquery");
 
-// $('#submitButton').on('click', _ =>{
-//     console.log($('#inputEmail').val(), $('#inputPassword').val());
-//     $("#submitButton").prop("disabled", true);
-//     ipcRenderer.send('ask-for-auth', { email: $('#inputEmail').val(), passWord: $('#inputPassword').val() })
-// });
 
-// ipcRenderer.on('ask-for-auth-reply', (_, res) => {
-//     window.location.href = '../html/bienvenue.html'
-//     // console.log(res);
-//     // if (res) {
-//     //     console.log('3awdha lkarek ghadi nredericti');
-//     //     window.location.href = '../html/bienvenue.html'
-//     // } else {
-//     //     $("#submitButton").prop("disabled", false);
-//     // }
-// })
+const emailRgex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
+
+$('#submitButton').on('click', _ =>{
+
+    let Cred = {
+        email : $('#inputEmail').val().toLowerCase(),
+        passWord : $('#inputPassword').val()
+    }
+    
+    if(emailRgex.test(Cred.email) && Cred.passWord){
+        $("#submitButton").prop("disabled", true);
+        ipcRenderer.send('ask-for-auth', Cred)
+    }else{
+        console.log("invalide format");
+        $("#connectionError").text("Invalide Format !")
+    }
+
+});
+
+ipcRenderer.on('ask-for-auth-reply', (_, reply, error) => {
+    if(!reply){
+        $("#connectionError").text(error)
+        $("#submitButton").prop("disabled", false);
+    }else{
+        window.location.href = '../html/bienvenue.html'
+    }
+})

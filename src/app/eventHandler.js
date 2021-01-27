@@ -8,6 +8,7 @@
 const { ipcMain } = require('electron');
 const openNav = require('./Controllers/navigatorController').open
 const save = require('./Controllers/exportController').export
+const connect = require('./API/auth').connect
 
 
 /** 
@@ -29,10 +30,11 @@ ipcMain.on('export-session', (e, idSession) =>{
     save(idSession)
 })
 
-// ipcMain.on('ask-for-auth', (event, args) =>{
-//     API.connect(args.email, args.passWord).then(res => {
-//         event.reply('ask-for-auth-reply', res.statusCode < 400)
-//     }).catch(err => {
-//         // erro to handl
-//     })
-// })
+ipcMain.on('ask-for-auth', (event, args) =>{
+    connect(args.email, args.passWord).then(res => {
+        __token = res.token
+        event.reply('ask-for-auth-reply', true)
+    }).catch(err => {
+        event.reply('ask-for-auth-reply', false, err.error.err)
+    })
+})
