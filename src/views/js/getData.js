@@ -1,7 +1,7 @@
 const request1 = require('request-promise');
 const API_URL1 = "http://api.infinite-scale.fr";
     const Auth1 = {
-    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF6ZXJ0eUBnbWFpbC5jb20iLCJ1c2VySWQiOjUsImlzQWRtaW4iOnRydWUsImlhdCI6MTYxMTEzNTE3OSwiZXhwIjoxNjExMTM4Nzc5fQ.S-wDTgzCCW_IbUVX9gYuH4ZVIMdQV9B4tYusShxXRAk"
+    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF6ZXJ0eUBnbWFpbC5jb20iLCJ1c2VySWQiOjUsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MTE3NDAxNzQsImV4cCI6MTYxMTc0Mzc3NH0.i3PSbztmRIRP_VwfWxZfcKXy-jyYLG9mkHwv-BnACvc"
 }
 var emailValue;
 var passValue;

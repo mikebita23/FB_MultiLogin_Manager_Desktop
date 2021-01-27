@@ -2,7 +2,7 @@ const request = require('request-promise');
 
 const API_URL = "http://api.infinite-scale.fr";
 const Auth = {
-    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF6ZXJ0eUBnbWFpbC5jb20iLCJ1c2VySWQiOjUsImlzQWRtaW4iOnRydWUsImlhdCI6MTYxMTEzNTE3OSwiZXhwIjoxNjExMTM4Nzc5fQ.S-wDTgzCCW_IbUVX9gYuH4ZVIMdQV9B4tYusShxXRAk"
+    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF6ZXJ0eUBnbWFpbC5jb20iLCJ1c2VySWQiOjUsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MTE3NDA2MTEsImV4cCI6MTYxMTc0NDIxMX0.4Ah_hnlccvT-6PhnWyZC8qCNXbPMcpqyXii7f5yiHYg"
 }
 module.exports = {
   // idUser= 

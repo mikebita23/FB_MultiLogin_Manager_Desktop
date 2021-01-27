@@ -11,7 +11,7 @@ var  passWord= document.getElementById("inputPassword")
 var  passWordConf= document.getElementById("inputConfirmPassword")
 
 const Auth = {
-    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF6ZXJ0eUBnbWFpbC5jb20iLCJ1c2VySWQiOjUsImlzQWRtaW4iOnRydWUsImlhdCI6MTYxMTEzNTE3OSwiZXhwIjoxNjExMTM4Nzc5fQ.S-wDTgzCCW_IbUVX9gYuH4ZVIMdQV9B4tYusShxXRAk"
+    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF6ZXJ0eUBnbWFpbC5jb20iLCJ1c2VySWQiOjUsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MTE3NDA2MTEsImV4cCI6MTYxMTc0NDIxMX0.4Ah_hnlccvT-6PhnWyZC8qCNXbPMcpqyXii7f5yiHYg"
 }
 var data;
 
@@ -39,8 +39,10 @@ data= getData()
            alert("Veuillez sair le mot de passe")
             
 
-          }else if((passWord.value && passWordConf.value) &&(passWord.value != passWordConf.value)){
+          }
+          else if((passWord.value && passWordConf.value) &&(passWord.value != passWordConf.value)){
               alert("Les mots de passe ne correspondent pas");
+              $("#modification").prop("disabled", false);
           }
       else {     
             ipcRenderer.send('update-user', { 
