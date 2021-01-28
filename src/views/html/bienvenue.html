@@ -41,17 +41,30 @@
   <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
-    <div class="bg-primary border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading" id="texte_white"><b>LOGO</b></div>
+    <!-- <div class="bg-primary border-right" id="sidebar-wrapper"> -->
+    <div class="lateral border-right" id="sidebar-wrapper">
+      <!-- <div class="sidebar-heading" id="texte_white"><b>LOGO</b></div> -->
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-primary" id="texte_white"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;PauL RAND</a>
-        <div class="list-group-item list-group-item-action bg-primary" id="texte_white">
+        <a href="#" class="list-group-item fond_bleu" id="texte_white"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;RUKATA David</a>
+        <!-- <a href="./index.html"><button type="button" class="btn btn-primary">Se deconnecter</button></a> -->
+        <a href="./index.html">&nbsp;&nbsp;&nbsp;&nbsp;<button type="button"
+          class="btn btn-primary" id="texte_white">Se deconnecter</button>
+        </a>
+        <br><br><br><br><br><br><br>
+        <div class="list-group-item fond_bleu" id="texte_white">
           <div>Forfait <b>basique</b></div><br>
           <div><a href="http://localhost/projet-multilogin/index.html"><button type="button"
-                class="btn btn-warning" id="texte_white">Améliorer</button></a></div>
+                class="btn btn-primary" id="texte_white">Améliorer</button>
+              </a>
+          </div>
         </div>
-        <a href="./profil.html" class="list-group-item list-group-item-action bg-primary" id="texte_white">Profil</a>
-        <a href="./index.html" class="list-group-item list-group-item-action bg-primary" id="texte_white">Se deconnecter</a>
+        <div id="bas">
+          <a href="./profil.html" class="list-group-item fond_bleu" id="texte_white">Profil</a>
+          <a href="#" class="list-group-item fond_bleu" id="texte_white">Aide&nbsp;&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></a>
+        </div>
+
+        <!-- list-group-item-action -->
+        <!-- <a href="./index.html" class="list-group-item list-group-item-action fond_bleu" id="texte_white">Se deconnecter</a>  -->
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -67,7 +80,6 @@
           </button>
         -->
       </nav>
-
 
       <div class="container-fluid">
 
@@ -152,11 +164,11 @@
                 <p class="text-danger">{{session.etat}}.</p><br>
               </div>
               <div ng-if="session.etat == 'Active'">
-                <div ng-if="session.description == 'Session en cours...'">
+                <div ng-if="session.description == 'Session en cours'">
                   <button type="button" class="btn btn-primary">{{session.description}}&nbsp;&nbsp;<i
                       class="fa fa-spinner" aria-hidden="true"></i></button>
                 </div>
-                <div ng-if="session.description == 'Lancer la session...'">
+                <div ng-if="session.description == 'Lancer la session'">
                   <button type="button" onClick="chromium()" class="btn btn-primary">{{session.description}}&nbsp;&nbsp;<i
                       class="fa fa-arrow-right" aria-hidden="true"></i></button>
                 </div>
@@ -201,14 +213,14 @@
       shell.openExternal(this.href);
     });
   </script>
-<!--
+  <!--
   <script type="text/javascript">
     function chromium() {
       const nav = require('./index.js')
       nav.openNav()
     }
   </script> -->
-  
+
 
 </body>
 
