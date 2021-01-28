@@ -13,6 +13,10 @@ myApp.controller('sessionController', function ($scope, $http) {
         ipcRenderer.send('export-session', id);
     }
 
+    ipcRenderer.send('get-sessions')
+    ipcRenderer.on('get-sessions-reply', ( _ , sessions) => {
+        console.log("sessions : ", sessions);
+    })
     $http({
         method: 'GET',
         url: './sessions.json'

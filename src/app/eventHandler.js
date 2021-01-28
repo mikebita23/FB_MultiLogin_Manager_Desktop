@@ -10,6 +10,7 @@ const openNav = require('./Controllers/navigatorController').open
 const save = require('./Controllers/exportController').export
 const connect = require('./API/auth').connect
 const createUser = require('./API/user').signUp
+const getSessions = require('./API/session').getSessions
 
 /** 
  * @method
@@ -43,5 +44,11 @@ ipcMain.on('create-account', (event, user) => {
     createUser(user).then(res =>{
         console.log(res);
         event.reply('create-account-reply', true)
+    }).catch(console.log)
+})
+
+ipcMain.on('get-sessions', (event) => {
+    getSessions(true).then(res => {
+        event.reply('get-sessions-reply', res)
     }).catch(console.log)
 })
