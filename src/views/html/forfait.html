@@ -1,49 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <script>
-var basique= document.getElementById("basique")
-var normal= document.getElementById("normal")
-var moyen= document.getElementById("moyen")
-var superieur= document.getElementById("superieur")
-    const request2 = require('request-promise');
-    const API_URL2 = "http://api.infinite-scale.fr";
-        const Auth2 = {
-        'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF6ZXJ0eUBnbWFpbC5jb20iLCJ1c2VySWQiOjUsImlzQWRtaW4iOnRydWUsImlhdCI6MTYxMDk2MzY4MywiZXhwIjoxNjEwOTY3MjgzfQ.wR8ppPSxoNJSssLeUWSahOT2zXNklImHP_pHGNyTXJE"
-    }
-    
-  var data
-    function getData() {
-        return request2({
-            method: 'GET',
-            url: `${API_URL2}/forf/all`,
-            auth: Auth2,
-            json: true
-        }).then(res => {
-           
-            data=res;
-            console.log("Ma data", data);
-            return data.map(d => {
-              console.log(`${d.nom}&nbsp;&nbsp;&nbsp ${d.description}&nbsp;&nbsp;&nbsp${d.prix} `);
-                //   basique.innerHTML+= `${d.nom}&nbsp;&nbsp;&nbsp ${d.description}&nbsp;&nbsp;&nbsp${d.prix} `;
-                //   moyen.innerHTML+= `${d.nom}&nbsp;&nbsp;&nbsp ${d.description}&nbsp;&nbsp;&nbsp${d.prix} `;
-                //   normal.innerHTML+= `${d.nom}&nbsp;&nbsp;&nbsp ${d.description}&nbsp;&nbsp;&nbsp${d.prix} `;
-                //   superieur.innerHTML+= `${d.nom}&nbsp;&nbsp;&nbsp ${d.description}&nbsp;&nbsp;&nbsp${d.prix} `
-                }
-               
-                ).join('') ;
-        }).catch(err => {
-            console.log(err.error);
-            return err;
-        })
-        console.log(" Donnee"+ data);
-    }
-    getData();
-   
-   
-   
-    </script>
-
+ 
 
 <head>
 

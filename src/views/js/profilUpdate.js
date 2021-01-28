@@ -11,30 +11,11 @@ var  passWord= document.getElementById("inputPassword")
 var  passWordConf= document.getElementById("inputConfirmPassword")
 
 const Auth = {
-    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmlAZ21haWwuY29tIiwidXNlcklkIjoxMCwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTYxMTc2MzI0MCwiZXhwIjoxNjExNzY2ODQwfQ.ecb0QtKd-gRDXETk7mrnJ9xyFidRAnaPkpIGrVs2XJg"
-}
-var data;
-
-function getData() {
-    return request({
-        method: 'POST',
-        url: `${API_URL}/users/get`,
-        auth: Auth,
-        json: true
-    }).then(res => {
-       
-        data=res;
-        return data;
-    }).catch(err => {
-        console.log(err.error);
-        return err;
-    })
+    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2lAbWlraS5jb20iLCJ1c2VySWQiOjExLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MTE4MjE4OTksImV4cCI6MTYxMTgyNTQ5OX0.UPf3faaOKaXrpeb2_EQB6o971XYOft-9V7XzdkBXfko"
 }
 
-data= getData()
 
     $('#modification').on('click', _ =>{
-        console.log(data.firstName, data.lastName);
         if((!passWord.value && !passWordConf.value)  ){
            alert("Veuillez sair le mot de passe")
             
@@ -59,7 +40,7 @@ data= getData()
     
 ipcRenderer.on('update-user-reply', (_, res) => {
     if (res) {
-        console.log(data)
+        console.log(res)
         window.location.href = './html/bienvenue.html'
     } 
 });

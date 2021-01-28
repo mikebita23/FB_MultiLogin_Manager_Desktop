@@ -2,9 +2,8 @@
 
 const { ipcMain } = require('electron');
 const apiMessage = require('./API/message');
-const apiForfait = require('./API/forfait');
 const apiUser = require('./API/user');
-const { event } = require('jquery');
+
 
 // Message 
 ipcMain.on('send-message', (event, data) =>{
@@ -24,31 +23,4 @@ ipcMain.on('get-user',_=>{
     });
 
 
-//Forfait
-
-ipcMain.on('add-forfait', (event, data) =>{
-    apiMessage.addForfait(data).then(res => {
-        console.log(data)
-        event.reply('add-forfait-reply', true)
-    }).catch(err => {
-        console.log(err)
-    })
-});
-
-ipcMain.on('udapte-forfait', (event, data) =>{
-    apiMessage.updateForfait(idForfait).then(res => {
-        console.log(data)
-        event.reply('update-forfait-reply',true)
-    }).catch(err => {
-        console.log(err)
-    })
-});
-ipcMain.on('get-forfaits', (event)=>{ 
-    apiForfait.getForfaits().then(
-        res=>{
-           event.reply('get-forfaits-reply',true)
-        }).catch(err =>{
-            console.log(err)
-        })
-});
 
