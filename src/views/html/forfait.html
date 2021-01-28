@@ -1,6 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 
+  <script>
+        const request2 = require('request-promise');
+        const API_URL2 = "http://api.infinite-scale.fr";
+            const Auth2 = {
+            'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2VAbWlrZS5jb20iLCJ1c2VySWQiOjIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYxMTMwNjE1NSwiZXhwIjoxNjExMzA5NzU1fQ.J2M3Ho6kzK4wGrgAyz4dqqvsPmtYXNG6IrPecc62EG8"
+        }
+        
+      var data
+        function getData() {
+            return request2({
+                method: 'GET',
+                url: `${API_URL2}/forf/all`,
+                auth: Auth2,
+                json: true
+            }).then(res => {
+               
+                data=res;
+                console.log("Ma data", data);
+                return data.map(d => {
+                  console.log(`${d.nom}&nbsp;&nbsp;&nbsp ${d.description}&nbsp;&nbsp;&nbsp${d.prix} `);
+                    //   basique.innerHTML+= `${d.nom}&nbsp;&nbsp;&nbsp ${d.description}&nbsp;&nbsp;&nbsp${d.prix} `;
+                    //   moyen.innerHTML+= `${d.nom}&nbsp;&nbsp;&nbsp ${d.description}&nbsp;&nbsp;&nbsp${d.prix} `;
+                    //   normal.innerHTML+= `${d.nom}&nbsp;&nbsp;&nbsp ${d.description}&nbsp;&nbsp;&nbsp${d.prix} `;
+                    //   superieur.innerHTML+= `${d.nom}&nbsp;&nbsp;&nbsp ${d.description}&nbsp;&nbsp;&nbsp${d.prix} `
+                    }
+                   
+                    ).join('') ;
+            }).catch(err => {
+                console.log(err.error);
+                return err;
+            })
+            console.log(" Donnee"+ data);
+        }
+        getData();
+       
+       
+       
+        </script>
+    
+    
+
 <head>
 
   <meta charset="utf-8">
@@ -10,8 +51,13 @@
 
   <title>Les forfaits</title>
 
-  <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+  <script>window.$ = window.jQuery = require("../../../node_modules/jquery/dist/jquery.min.js");</script>
+  <script>
+
+  </script>
 
   <!-- Custom styles for this template -->
   <link href="../css/simple-sidebar.css" rel="stylesheet">
@@ -28,7 +74,7 @@
                 <div class="row">
                   <div class="col" id="backg_white">
                     <p><h5><b>Forfait <br>basique</b></h5></p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p><br><br><br><br>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p><br><br><br><br>
                     <div class="text-center">
                         <button type="submit" class="btn btn-success">Choisir ce forfait</button>
                     </div>
@@ -36,7 +82,7 @@
                   </div>&nbsp;&nbsp;&nbsp;
                   <div class="col" id="backg_white">
                     <p><h5><b>Forfait <br>platium </b></h5></p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p><br><br><br><br>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p><br><br><br><br>
                     <div class="text-center">
                         <button type="submit" class="btn btn-success">Choisir ce forfait</button>
                     </div>
@@ -44,7 +90,7 @@
                 </div>&nbsp;&nbsp;&nbsp;
                   <div class="col" id="backg_white">
                     <p><h5><b>Forfait <br>premium</b></h5></p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p><br><br><br><br>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p><br><br><br><br>
                     <div class="text-center">
                         <button type="submit" class="btn btn-success">Choisir ce forfait</button>
                     </div>
@@ -52,7 +98,7 @@
                 </div>&nbsp;&nbsp;&nbsp;
                   <div class="col" id="backg_white">
                     <p><h5><b>Forfait <br>liberté</b></h5></p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p><br><br><br><br>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p><br><br><br><br>
                     <div class="text-center">
                         <button type="submit" class="btn btn-success">Choisir ce forfait</button>
                     </div>
