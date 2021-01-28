@@ -1,0 +1,82 @@
+{
+    "name": "fb_multilogin_manager_desktop",
+    "productName": "fb_multilogin_manager",
+    "version": "1.0.0",
+    "description": "My Electron application description",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "electron-forge start",
+        "package": "electron-forge package",
+        "make": "electron-forge make",
+        "publish": "electron-forge publish",
+        "lint": "echo \"No linting configured\"",
+        "buildInstaller": "electron-builder"
+    },
+    "build": {
+        "appId": "fb_multilogin_manager",
+        "win": {
+            "target": "nsis",
+            "requestedExecutionLevel": "requireAdministrator"
+        },
+        "nsis": {
+            "uninstallDisplayName": "fb_multilogin_manager",
+            "license": "license.txt",
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true
+        }
+    },
+    "keywords": [],
+    "author": "Nidal El Fengaoui <nidal.fengaoui@gmail.com>",
+    "license": "MIT",
+    "config": {
+        "forge": {
+            "packagerConfig": {},
+            "makers": [
+                {
+                    "name": "@electron-forge/maker-squirrel",
+                    "config": {
+                        "name": "fb_multilogin_manager_desktop"
+                    }
+                },
+                {
+                    "name": "@electron-forge/maker-zip",
+                    "platforms": [
+                        "darwin"
+                    ]
+                },
+                {
+                    "name": "@electron-forge/maker-deb",
+                    "config": {}
+                },
+                {
+                    "name": "@electron-forge/maker-rpm",
+                    "config": {}
+                }
+            ]
+        }
+    },
+    "dependencies": {
+        "async": "^3.2.0",
+        "bcrypt": "^5.0.0",
+        "bootstrap": "^4.5.3",
+        "chromium": "^3.0.2",
+        "electron-reload": "^1.5.0",
+        "electron-squirrel-startup": "^1.0.0",
+        "joi": "^17.3.0",
+        "jquery": "^3.5.1",
+        "proxy-chain": "^0.4.6",
+        "request-promise": "^4.2.6",
+        "test": "^0.6.0",
+        "validator": "^13.5.2",
+        "validator-js": "^0.2.1"
+    },
+    "devDependencies": {
+        "@electron-forge/cli": "^6.0.0-beta.54",
+        "@electron-forge/maker-deb": "^6.0.0-beta.54",
+        "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+        "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+        "@electron-forge/maker-zip": "^6.0.0-beta.54",
+        "electron": "11.0.3",
+        "electron-builder": "^22.9.1"
+    }
+}

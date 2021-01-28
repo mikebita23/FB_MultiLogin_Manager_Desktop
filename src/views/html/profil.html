@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <script src="../js/getData.js"></script>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Page de bienvenue</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script> -->
+  <script>window.$ = window.jQuery = require("../../../node_modules/jquery/dist/jquery.min.js");</script>
+
+  <!-- Custom styles for this template -->
+  <link href="../css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+<body>
+  <div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div class="bg-primary border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading" id="texte_white"><b>LOGO</b></div>
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-primary" id="texte_white"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;PauL RAND</a>
+        <a href="./bienvenue.html" class="list-group-item list-group-item-action bg-primary" id="texte_white">Accueil</a>
+        <a href="./index.html" class="list-group-item list-group-item-action bg-primary" id="texte_white">Se deconnecter</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-outline-primary" id="menu-toggle">Basculer le menu</button>
+      </nav>
+
+
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"><b>Modifier Profil</b></h5>
+                        <form class="form-signin" action="./bienvenue.html"
+                        >
+                        <div class="form-label-group">
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" id="inputFirstName" class="form-control" placeholder="Prénom"   autofocus>
+                                    <small id="connectionError" class="form-text text-muted" style="color: red !important ;" ></small>
+                                </div>
+                                <div class="col">
+                                    <input type="text" id="inputLastName" class="form-control" placeholder="Nom"   autofocus>
+                                    <small id="connectionError" class="form-text text-muted" style="color: red !important ;" ></small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-label-group">
+                            <br>
+                            <input type="email" id="inputEmail" class="form-control" placeholder="Adresse e-mail"   autofocus>
+                            <small id="connectionError" class="form-text text-muted" style="color: red !important ;" ></small>
+                        </div>
+                        <div class="form-label-group">
+                            <br>
+                            <input type="text" id="inputPhoneNumber" class="form-control" placeholder="numéro de telephone* ( facultatif ) "  autofocus>
+                            <small id="connectionError" class="form-text text-muted" style="color: red !important ;" ></small>
+                        </div>
+                        <div class="form-label-group">
+                            <br>
+                            <input type="password" id="inputPassword" class="form-control" placeholder="Saisissez votre mot de passe"  >
+                            <small id="connectionError" class="form-text text-muted" style="color: red !important ;" ></small>
+                            <br>
+                        </div>
+                        <div class="form-label-group">
+                            <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirmer votre mot de passe"  >
+                            <small id="connectionError" class="form-text text-muted" style="color: red !important ;" ></small>
+                            <br>
+                        </div>
+
+                            <div class="form-label-group">
+                                <br>
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <button type="button" id="annuler"   class="btn btn-danger">Annuler</button>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <button type="submit"  id="inscription"   class="btn btn-success">Valider</button>
+                                        </div>
+                                        
+                                        <div class="col-md-2">
+                                    
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </form>
+                    </div>
+                 </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- /#page-content-wrapper -->
+
+  </div>
+
+
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <!--<script src="vendor/jquery/jquery.min.js"></script>-->
+  <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Menu Toggle Script -->
+  <script src="../js/profilUpdate.js"></script>
+  <script src="../js/inscription.js"></script>
+  
+  
+
+
+</body>
+
+</html>

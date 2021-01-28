@@ -1,0 +1,147 @@
+/*!
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template/simple-sidebar)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
+ */
+
+ #wrapper {
+  overflow-x: hidden;
+}
+
+#backg_blue{
+  background: rgb(34, 31, 231);
+}
+
+#backg_white{
+  background: white;
+}
+
+#mdp_forgot{
+  color: black;
+  /*font-style: italic;*/
+}
+
+#texte_white{
+  color: white;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+
+
+.jumbotron { 
+ height: 144px; 
+ /*width: auto; */
+}
+
+a:link
+{ 
+ text-decoration:none; 
+}
+
+.valider{
+  background-color:#39cf87;
+  color:white;
+  width: 45%;;
+  padding: 10px;
+  /*font-size: 0.9em;*/
+}
+
+.session{
+  background-color:rgb(34, 31, 231);
+  color:white;
+  /*font-size: 0.9em;*/
+}
+
+.valide{
+  background-color:#39cf87;
+  color:white;
+  /*font-size: 0.9em;*/
+}
+
+.danger{
+  background-color:#eb536d;
+  color:white;
+  /*font-size: 0.9em;*/
+}
+
+.essayer{
+  background-color: white;
+  padding: 15px;
+}
+
+#taille_mdp{
+  font-size: 0.7em;
+  font-style: italic;
+}
+
+.lateral{
+  background: rgb(34, 31, 231);
+}
+
+.fond_bleu{
+  background: rgb(34, 31, 231);
+}
+
+.radius{
+  border-radius: 10px;
+}
+
+#bas{
+  position: absolute;
+  bottom: 0;
+}
