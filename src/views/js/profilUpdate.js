@@ -10,20 +10,23 @@ var  phoneNumber= document.getElementById("tel");
 var  passWord= document.getElementById("inputPassword")
 var  passWordConf= document.getElementById("inputConfirmPassword")
 
-const Auth = {
-    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2lAbWlraS5jb20iLCJ1c2VySWQiOjExLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MTE4MjE4OTksImV4cCI6MTYxMTgyNTQ5OX0.UPf3faaOKaXrpeb2_EQB6o971XYOft-9V7XzdkBXfko"
-}
-
 
     $('#modification').on('click', _ =>{
+        if((passWord.value && !passWordConf.value)  ){
+            $("#inputConfirmPassword").next().text("Invalid format !")
+            return
+           }else if((!passWord.value && passWordConf.value)  ){
+            $("#inputConfirmPassword").next().text("Invalid format !")
+            return
+           }else
         if((!passWord.value && !passWordConf.value)  ){
-           alert("Veuillez sair le mot de passe")
-            
-
+            $("#inputConfirmPassword").next().text("Invalid format !")
+            return
           }
           else if((passWord.value && passWordConf.value) &&(passWord.value != passWordConf.value)){
-              alert("Les mots de passe ne correspondent pas");
-              $("#modification").prop("disabled", false);
+            $("#inputConfirmPassword").next().text("Invalid format !")
+            return
+              
           }
       else {     
             ipcRenderer.send('update-user', { 
@@ -32,20 +35,22 @@ const Auth = {
                 email: $(email).val(),
                 phoneNumber: $(phoneNumber).val(),
                 passWord: $(passWord).val()
-                })//;     
-                window.location.href = '../html/bienvenue.html'      
+                })
+                // //Redirige vers Bienvenue    
+                window.location.href = '../html/bienvenue.html'  
     }
     });
 
     
 ipcRenderer.on('update-user-reply', (_, res) => {
     if (res) {
-        console.log(res)
-        window.location.href = './html/bienvenue.html'
-    } 
+      console.log(res)
+    } else{
+       console.log('un champ non saisi')  
+    }
 });
 
-/// Get user 
+
 
 $("#menu-toggle").on('click', function (e) {
     e.preventDefault();

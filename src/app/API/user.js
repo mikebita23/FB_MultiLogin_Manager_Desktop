@@ -2,10 +2,17 @@ const request = require('request-promise');
 
 const API_URL = "http://api.infinite-scale.fr";
 const Auth = {
-    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pa2lAbWlraS5jb20iLCJ1c2VySWQiOjExLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MTE4MjE4OTksImV4cCI6MTYxMTgyNTQ5OX0.UPf3faaOKaXrpeb2_EQB6o971XYOft-9V7XzdkBXfko"
+    'bearer': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmlkQGdtYWlsLmNvbSIsInVzZXJJZCI6OSwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjExODQyMDY4LCJleHAiOjE2MTE4NDU2Njh9.Bzr4XQx_j7zTNoPsixC4zqXFwTIylmJWUTFe1nQsK08"
 }
 module.exports = {
-  // idUser= 
+    signUp: (user) => {
+        return request({
+            method: 'POST',
+            url: `${__API_URL}/users/add`,
+            body: user,
+            json: true
+        })
+    },
     updateUser: (userData, callBack) => {
         return request({
             method: 'POST',
@@ -16,7 +23,7 @@ module.exports = {
                 email: userData.email,
                 phoneNumber: userData.phoneNumber,
                 passWord: userData.passWord,
-                role: "CLIENT",
+                role: "ADMIN",
                 forfaitId: null
             },
             auth: Auth,

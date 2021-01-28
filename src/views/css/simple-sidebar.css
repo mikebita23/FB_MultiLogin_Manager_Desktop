@@ -9,7 +9,7 @@
 }
 
 #backg_blue{
-  background: #0074d9;
+  background: rgb(34, 31, 231);
 }
 
 #backg_white{
@@ -18,7 +18,7 @@
 
 #mdp_forgot{
   color: black;
-  font-style: italic;
+  /*font-style: italic;*/
 }
 
 #texte_white{
@@ -80,4 +80,68 @@
   text-align: center;
   pointer-events: none;
   color: #aaa;
+}
+
+
+.jumbotron { 
+ height: 144px; 
+ /*width: auto; */
+}
+
+a:link
+{ 
+ text-decoration:none; 
+}
+
+.valider{
+  background-color:#39cf87;
+  color:white;
+  width: 45%;;
+  padding: 10px;
+  /*font-size: 0.9em;*/
+}
+
+.session{
+  background-color:rgb(34, 31, 231);
+  color:white;
+  /*font-size: 0.9em;*/
+}
+
+.valide{
+  background-color:#39cf87;
+  color:white;
+  /*font-size: 0.9em;*/
+}
+
+.danger{
+  background-color:#eb536d;
+  color:white;
+  /*font-size: 0.9em;*/
+}
+
+.essayer{
+  background-color: white;
+  padding: 15px;
+}
+
+#taille_mdp{
+  font-size: 0.7em;
+  font-style: italic;
+}
+
+.lateral{
+  background: rgb(34, 31, 231);
+}
+
+.fond_bleu{
+  background: rgb(34, 31, 231);
+}
+
+.radius{
+  border-radius: 10px;
+}
+
+#bas{
+  position: absolute;
+  bottom: 0;
 }
