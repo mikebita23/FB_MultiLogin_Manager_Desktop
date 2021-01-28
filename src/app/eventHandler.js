@@ -9,7 +9,7 @@ const { ipcMain } = require('electron');
 const openNav = require('./Controllers/navigatorController').open
 const save = require('./Controllers/exportController').export
 const connect = require('./API/auth').connect
-
+const createUser = require('./API/user').signUp
 
 /** 
  * @method
@@ -37,4 +37,11 @@ ipcMain.on('ask-for-auth', (event, args) =>{
     }).catch(err => {
         event.reply('ask-for-auth-reply', false, err.error.err)
     })
+})
+
+ipcMain.on('create-account', (event, user) => {
+    createUser(user).then(res =>{
+        console.log(res);
+        event.reply('create-account-reply', true)
+    }).catch(console.log)
 })
