@@ -8,6 +8,7 @@ const request = require('request-promise');
 module.exports = {
 
     connect: (email, password) => {
+        console.log(email, password);
         return request({
             method: 'POST',
             url: `${__API_URL}/Auth/login`,

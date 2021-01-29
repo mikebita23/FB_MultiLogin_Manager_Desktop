@@ -10,7 +10,7 @@ $('#submitButton').on('click', _ =>{
         email : $('#inputEmail').val().toLowerCase(),
         passWord : $('#inputPassword').val()
     }
-    
+    console.log(Cred);
     if(emailRgex.test(Cred.email) && Cred.passWord){
         $("#submitButton").prop("disabled", true);
         ipcRenderer.send('ask-for-auth', Cred)

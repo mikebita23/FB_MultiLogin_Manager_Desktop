@@ -15,6 +15,9 @@
   <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+  <script>window.$ = window.jQuery = require("../../../node_modules/jquery/dist/jquery.min.js");</script>
+
+
   <!-- Custom styles for this template -->
   <link href="../css/simple-sidebar.css" rel="stylesheet">
   <script src="../js/bienvenue.js"></script>
@@ -112,17 +115,22 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <textarea class="form-control rounded-0" rows="3"></textarea>
+                      <textarea id="areaContenu" class="form-control rounded-0" rows="3"></textarea>
                     </div>
-                    <!-- Default radio -->
-                    <div class="form-check text-center">
+                    <div >
+
+                      
+                     <!-- Default radio -->
+                     <div class="form-check text-center">
                       <input
                         class="form-check-input"
                         type="radio"
                         name="flexRadioDefault"
-                        id="flexRadioDefault1"
+                        id="aide"
+                        value="aide"
+                        checked="checked"
                       />
-                      <label class="form-check-label" for="flexRadioDefault1">Aide</label>
+                      <label class="form-check-label" for="aide">Aide</label>
                     </div>
                     <!-- Default checked radio -->
                     <div class="form-check text-center">
@@ -130,13 +138,17 @@
                         class="form-check-input"
                         type="radio"
                         name="flexRadioDefault"
-                        id="flexRadioDefault2"
+                        id="blocage"
+                        value="blocage"
                       />
-                      <label class="form-check-label" for="flexRadioDefault2">Blocage </label>
+                      <label class="form-check-label" for="blocage">Blocage </label>
                     </div>
+                    </div>
+                  
+​
                     <div class="modal-footer">
                       <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
-                      <button type="button" class="btn btn-primary">Envoyer message</button>
+                      <button type="button" id="messageButton" class="btn btn-primary">Envoyer message</button>
                     </div>
                   </div>
                 </div>
@@ -172,27 +184,8 @@
       </div>
     </div>
 
-    <!-- /#page-content-wrapper -->
-
   </div>
-
-
-  <!-- /#wrapper -->
-
-  <!-- Bootstrap core JavaScript -->
-  <!--<script src="vendor/jquery/jquery.min.js"></script>-->
   <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Menu Toggle Script -->
- 
-<!-- 
-  <script type="text/javascript">
-    function chromium() {
-      const nav = require('./index.js')
-      nav.openNav()
-    }
-  </script> -->
-
 
 </body>
 

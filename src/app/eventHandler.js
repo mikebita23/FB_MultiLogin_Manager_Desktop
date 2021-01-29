@@ -11,6 +11,9 @@ const save = require('./Controllers/exportController').export
 const connect = require('./API/auth').connect
 const createUser = require('./API/user').signUp
 const getSessions = require('./API/session').getSessions
+const apiMessage = require('./API/message');
+const apiUser = require('./API/user');
+
 
 /** 
  * @method
@@ -32,7 +35,9 @@ ipcMain.on('export-session', (e, idSession) =>{
 })
 
 ipcMain.on('ask-for-auth', (event, args) =>{
+    console.log(args);
     connect(args.email, args.passWord).then(res => {
+        
         __token = res.token
         event.reply('ask-for-auth-reply', true)
     }).catch(err => {
@@ -52,3 +57,25 @@ ipcMain.on('get-sessions', (event) => {
         event.reply('get-sessions-reply', res)
     }).catch(console.log)
 })
+
+// Message 
+ipcMain.on('send-message', (event, data) =>{
+    apiMessage.sendMessage(data, (err, res, body)=> {
+        event.reply('send-message-reply',true)     
+     })
+});
+
+//Users
+ipcMain.on('update-user', ( event, data) =>{
+    apiUser.updateUser(data, (res)=> {
+        event.reply('update-user-reply', true)  
+     })
+});
+ipcMain.on('get-user',_=>{
+    apiUser.getUser()
+    });
+
+ipcMain.on('get-api-cred', (event) => {
+    event.reply('get-api-cred-reply', {apiUrl: __API_URL, token: __token})
+})
+

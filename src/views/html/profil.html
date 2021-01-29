@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
-
 <head>
 
   <meta charset="utf-8">
@@ -13,7 +12,7 @@
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script> -->
   <script>window.$ = window.jQuery = require("../../../node_modules/jquery/dist/jquery.min.js");</script>
 
   <!-- Custom styles for this template -->
@@ -44,11 +43,6 @@
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
         <button class="btn btn-outline-primary" id="menu-toggle">Basculer le menu</button>
-        <!--
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        -->
       </nav>
 
 
@@ -65,7 +59,7 @@
                                         Nom
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" id="prenom" class="form-control" placeholder="Nom">
+                                        <input type="text" id="nom" value= "" class="form-control" placeholder="Nom" required autofocusz>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +70,7 @@
                                         Prénom
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" id="nom" class="form-control" placeholder="Prénom">
+                                        <input type="text" id="prenom" class="form-control" placeholder="Prénom" required autofocus>
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +81,7 @@
                                         Email
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" id="inputEmail" class="form-control" placeholder="Adresse e-mail">
+                                        <input type="text" id="inputEmail" class="form-control" placeholder="Adresse e-mail" required autofocus>
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +92,7 @@
                                         Tél
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" id="inputEmail" class="form-control" placeholder="téléphone">
+                                        <input type="text" id="tel" class="form-control" placeholder="téléphone" required autofocus>
                                     </div>
                                 </div>
                             </div>
@@ -106,39 +100,49 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        Nouveau mot de passe
+                                        Password
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="password" id="inputPassword" class="form-control" placeholder="Saisissez votre mot de passe">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-label-group">
+                                <input type="password" id="inputPassword" class="form-control"  
+                                    title="8 caractères, au moins une majuscule (uppercase) et au moins une minuscule (lowercase)." pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Saisissez votre mot de passe" required>
+                                <span name="passworderror" class="text-danger font-weight-bold"></span>
                                 <br>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        Confirmer mot de passe
-                                    </div>
-                                    <div class="col-md-8">
-                                        <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirmer votre mot de passe">
-                                    </div>
-                                </div>
                             </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    Confirmer
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-label-group" onsubmit="check_Password(this)">
+                                        <input type="password" id="inputConfirmPassword" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                            title="La confirmation de mot de passe doit être conforme au mot de passe." placeholder="Confirmer votre mot de passe" required>
+        
+                                        <br>
+                                    </div>
+                        </div>
+                        </div>
+                            
+
                             <div class="form-label-group">
                                 <br>
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-md-5">
-                                            <a href="bienvenue.html"><button type="button" id="inscription" onclick="myFunction()"  class="btn danger">annuler</button></a>
+                                            <button type="button" id="annuler"   class="btn btn-danger">Annuler</button>
                                         </div>
+                                        <div class="col-md-5">
+                                            <button type="submit"  id="modification"   class="btn btn-success">Valider</button>
+                                        </div>
+                                        
                                         <div class="col-md-2">
                                     
                                         </div>
-                                        <div class="col-md-5">
-                                            <button type="submit" id="modiification" onclick="myFunction()"  class="btn valide">valider</button>
-                                        </div>
+                                       
                                     </div>
-                                </div>     
+                                </div>
+                                
                             </div>
                         </form>
                     </div>
@@ -158,30 +162,13 @@
   <!-- Bootstrap core JavaScript -->
   <!--<script src="vendor/jquery/jquery.min.js"></script>-->
   <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
   <!-- Menu Toggle Script -->
-  <script>
-    $("#menu-toggle").click(function (e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
-
-    const shell = require('electron').shell;
-
-    // assuming $ is jQuery
-    $(document).on('click', 'a[href^="http"]', function (event) {
-      event.preventDefault();
-      shell.openExternal(this.href);
-    });
-  </script>
-<!--
-  <script type="text/javascript">
-    function chromium() {
-      const nav = require('./index.js')
-      nav.openNav()
-    }
-  </script> -->
+  <script src="../js/profilUpdate.js"></script>
+  <script src="../js/getData.js"></script>
   
+  
+  
+
 
 </body>
 
