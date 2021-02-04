@@ -7,7 +7,8 @@
 
 const { ipcMain } = require('electron');
 const openNav = require('./Controllers/navigatorController').open
-const save = require('./Controllers/exportController').export
+const save = require('./Controllers/sessionDataController').export
+const getSessions = require('./API/session').getSessions
 const connect = require('./API/auth').connect
 const createUser = require('./API/user').signUp
 const getSessions = require('./API/session').getSessions
@@ -29,6 +30,12 @@ ipcMain.on('open-session', (e, idSession)=>{
     openNav(idSession)
 })
 
+
+ipcMain.on('get-session', event => {
+    getSessions().then(res =>{
+        // event.reply('get-session-reply', )
+    })
+})
 
 ipcMain.on('export-session', (e, idSession) =>{
     save(idSession)

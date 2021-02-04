@@ -27,7 +27,7 @@ module.exports = {
                 'Authorization': `Bearer ${__token}`
             },
             body: {
-                all: all
+                all: all ? all : false
             },
             json: true
         })

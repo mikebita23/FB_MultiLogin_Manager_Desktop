@@ -20,8 +20,6 @@ module.exports = {
         }).catch(err => {
             console.log(`\n\t\t COMPRESSING ERROR : ${err} \n`);
         })
-
-        //uploading code goes here
         
     }
 }
