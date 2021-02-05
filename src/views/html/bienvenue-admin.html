@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Page de bienvenue</title>
+
+  <!-- Bootstrap core CSS -->
+  <script  src="../../../node_modules/jquery/dist/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+  <script>window.$ = window.jQuery = require("../../../node_modules/jquery/dist/jquery.min.js");</script>
+
+
+  <!-- Custom styles for this template -->
+  <link href="../css/simple-sidebar.css" rel="stylesheet">
+  <script src="../js/bienvenue.js"></script>
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <!-- <div class="bg-primary border-right" id="sidebar-wrapper"> -->
+    <div class="lateral border-right" id="sidebar-wrapper">
+      <!-- <div class="sidebar-heading" id="texte_white"><b>LOGO</b></div> -->
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item fond_bleu" id="texte_white"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;RUKATA David</a>
+        <!-- <a href="./index.html"><button type="button" class="btn btn-primary">Se deconnecter</button></a> -->
+        <a href="./index.html">&nbsp;&nbsp;&nbsp;&nbsp;<button type="button"
+          class="btn btn-primary" id="texte_white">Se deconnecter</button>
+        </a>
+        <br><br><br><br><br><br><br>
+        <div class="list-group-item fond_bleu" id="texte_white">
+          <div>Forfait <b>basique</b></div><br>
+          <div><a href="http://localhost/projet-multilogin/index.html"><button type="button"
+                class="btn btn-primary" id="texte_white">Améliorer</button>
+              </a>
+          </div>
+        </div>
+        <div id="bas">
+          <a href="./profil.html" class="list-group-item fond_bleu" id="texte_white">Profil</a>
+          <a href="#" class="list-group-item fond_bleu" id="texte_white">Aide&nbsp;&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></a>
+        </div>
+
+        <!-- list-group-item-action -->
+        <!-- <a href="./index.html" class="list-group-item list-group-item-action fond_bleu" id="texte_white">Se deconnecter</a>  -->
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-outline-primary" id="menu-toggle">Basculer le menu</button>
+        <!--
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        -->
+      </nav>
+
+      <div class="container-fluid">
+
+        <h3>Liste de mes sessions</h3><br>
+
+        <div ng-controller="sessionController">
+          <div class="form-group has-search col-md-6">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input type="text" class="form-control" placeholder="Rechercher une session" ng-model="search">
+          </div>
+          <!--  <div ng-repeat="session in sessions | filter:{content: query} | orderBy:order"> -->
+          <div class="row">
+            <div ng-repeat="session in sessions | filter:search">
+              <b>{{session.name}}</b>&nbsp;&nbsp;<a data-toggle="modal" href="#myButtonEdit{{$index}}" ng-click="getApps(session)" title="renommer"><i class="fa fa-pencil" aria-hidden="true"></i></a></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a title="envoyer un message" data-toggle="modal" href="#isButton" ng-click="getApps(session)"><i class="fa fa-envelope TEXT-right" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a title="Exporter la session"  href="#" ng-click="exportSession(session.id)"><i class="fa fa-share-square " aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+              <!-- Modal -->
+            <div class="modal fade" id="myButtonEdit{{$index}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <div class="container-fluid">
+                      <div class="row">
+                          <div class="mx-auto">
+                              <div class="card card-signin my-5">
+                                  <div class="card-body">
+                                      <h5 class="card-title text-center"><b>Modifier profil</b></h5><br>
+                                      <form class="form-signin" action="./bienvenue-admin.html">
+                                          <div class="form-label-group">
+                                              <div class="row">
+                                                  <div class="col-md-4">
+                                                      Nom
+                                                  </div>
+                                                  <div class="col-md-8">
+                                                      <input type="text" id="nom" value= "" class="form-control" placeholder="Nom" required autofocusz>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="form-label-group">
+                                              <br>
+                                              <div class="row">
+                                                  <div class="col-md-4">
+                                                    Email
+                                                  </div>
+                                                  <div class="col-md-8">
+                                                      <input type="email" id="prenom" class="form-control" placeholder="Prénom" required autofocus>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="form-label-group">
+                                              <br>
+                                              <div class="row">
+                                                  <div class="col-md-4">
+                                                      Mot de passe
+                                                  </div>
+                                                  <div class="col-md-8">
+                                                      <input type="text" id="inputEmail" class="form-control" placeholder="Adresse e-mail" required autofocus>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <br>
+                                      <div class="form-label-group">
+                                      <br>
+                                      <div class="container-fluid text-center">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <button type="button" id="annuler"   class="btn btn-danger">Annuler</button>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="submit"  id="modification"   class="btn btn-success">Valider</button>
+                                            </div>         
+                                                
+                                        </div>
+                                        </div>
+                                              
+                                        </div>
+                                      </form>
+                                  </div>
+                               </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+              <!-- Button trigger modal
+              <button type="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                Launch demo modal
+              </button> -->
+              <div id="myButton{{$index}}" class="collapse">
+                <br>
+                  <form action="./bienvenue.html">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <input type="text" class="form-control" placeholder="Renommer" required>
+                      </div>
+                      <div class="col-md-2">
+                        <button type="submit" class="btn btn-success" id="myButton{{$index}}" ng-model="dav">ok</button>
+                        {{dav}}
+                      </div>
+                    </div>
+                  </form>
+              </div>
+
+              <!-- Modal -->
+              <div class="modal fade" id="isButton" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Envoyez-nous un message</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <textarea id="areaContenu" class="form-control rounded-0" rows="3"></textarea>
+                    </div>
+                    <div >
+
+
+                     <!-- Default radio -->
+                     <div class="form-check text-center">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="flexRadioDefault"
+                        id="aide"
+                        value="aide"
+                        checked="checked"
+                      />
+                      <label class="form-check-label" for="aide">Aide</label>
+                    </div>
+                    <!-- Default checked radio -->
+                    <div class="form-check text-center">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="flexRadioDefault"
+                        id="blocage"
+                        value="blocage"
+                      />
+                      <label class="form-check-label" for="blocage">Blocage </label>
+                    </div>
+                    </div>
+
+​
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                      <button type="button" id="messageButton" class="btn btn-primary">Envoyer message</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div ng-if="session.etat == 'Active'">
+                <p class="text-success">{{session.etat}}.</p><br>
+              </div>
+              <div ng-if="session.etat == 'Inactive'">
+                <p class="text-danger">{{session.etat}}.</p><br>
+              </div>
+              <div ng-if="session.etat == 'Active'">
+                <div ng-if="session.description == 'Session en cours'">
+                  <button type="button" class="btn btn-primary">{{session.description}}&nbsp;&nbsp;<i
+                      class="fa fa-spinner" aria-hidden="true"></i></button>
+                </div>
+                <div ng-if="session.description == 'Lancer la session'">
+                  <button type="button" ng-click="openSession(session.id)" class="btn btn-primary" >{{session.description}}&nbsp;&nbsp;<i
+                      class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                </div>
+              </div>
+              <div ng-if="session.etat == 'Inactive'">
+                <button type="button" class="btn btn-warning" disabled>{{session.description}}</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </div>
+              <hr>
+            </div>
+            <div class="jumbotron">
+              <a data-toggle="modal" href="#isButtonSession"><i class="fa fa-plus" aria-hidden="true"></i></a>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="isButtonSession" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <div class="container-fluid">
+                      <div class="row">
+                          <div class="mx-auto">
+                              <div class="card card-signin my-5">
+                                  <div class="card-body">
+                                      <h5 class="card-title text-center"><b>Créer une session</b></h5><br>
+                                      <form class="form-signin" action="./bienvenue-admin.html">
+                                          <div class="form-label-group">
+                                              <div class="row">
+                                                  <div class="col-md-4">
+                                                      Nom
+                                                  </div>
+                                                  <div class="col-md-8">
+                                                      <input type="text" id="nom" value= "" class="form-control" placeholder="Nom" required autofocusz>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="form-label-group">
+                                              <br>
+                                              <div class="row">
+                                                  <div class="col-md-4">
+                                                    Email
+                                                  </div>
+                                                  <div class="col-md-8">
+                                                      <input type="email" id="prenom" class="form-control" placeholder="Prénom" required autofocus>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="form-label-group">
+                                              <br>
+                                              <div class="row">
+                                                  <div class="col-md-4">
+                                                    Mot de passe
+                                                  </div>
+                                                  <div class="col-md-8">
+                                                      <input type="text" id="inputEmail" class="form-control" placeholder="Adresse e-mail" required autofocus>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <br>
+                                      <div class="form-label-group">
+                                      <br>
+                                      <div class="container-fluid text-center">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <button type="button" id="annuler"   class="btn btn-danger">Annuler</button>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="submit"  id="modification"   class="btn btn-success">Valider</button>
+                                            </div>         
+                                                
+                                        </div>
+                                        </div>
+                                              
+                                        </div>
+                                      </form>
+                                  </div>
+                               </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
