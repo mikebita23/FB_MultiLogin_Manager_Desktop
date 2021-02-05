@@ -37,14 +37,6 @@
         <a href="./index.html">&nbsp;&nbsp;&nbsp;&nbsp;<button type="button"
           class="btn btn-primary" id="texte_white">Se deconnecter</button>
         </a>
-        <br><br><br><br><br><br><br>
-        <div class="list-group-item fond_bleu" id="texte_white">
-          <div>Forfait <b>basique</b></div><br>
-          <div><a href="http://localhost/projet-multilogin/index.html"><button type="button"
-                class="btn btn-primary" id="texte_white">Améliorer</button>
-              </a>
-          </div>
-        </div>
         <div id="bas">
           <a href="./profil.html" class="list-group-item fond_bleu" id="texte_white">Profil</a>
           <a href="#" class="list-group-item fond_bleu" id="texte_white">Aide&nbsp;&nbsp;<i class="fa fa-question-circle" aria-hidden="true"></i></a>
@@ -67,7 +59,6 @@
           </button>
         -->
       </nav>
-      <p><a href="../html/bienvenue-admin.html">&nbsp;&nbsp;&nbsp;&nbsp;Admin test</a></p>
 
       <div class="container-fluid">
 
@@ -81,11 +72,80 @@
           <!--  <div ng-repeat="session in sessions | filter:{content: query} | orderBy:order"> -->
           <div class="row">
             <div ng-repeat="session in sessions | filter:search">
-              <b>{{session.name}}</b>&nbsp;&nbsp;<a data-toggle="collapse" href="#myButton{{$index}}" ng-click="getApps(session)" title="renommer"><i class="fa fa-pencil" aria-hidden="true"></i></a></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <b>{{session.name}}</b>&nbsp;&nbsp;<a data-toggle="modal" href="#myButtonEdit{{$index}}" ng-click="getApps(session)" title="renommer"><i class="fa fa-pencil" aria-hidden="true"></i></a></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <a title="envoyer un message" data-toggle="modal" href="#isButton" ng-click="getApps(session)"><i class="fa fa-envelope TEXT-right" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <a title="Exporter la session"  href="#" ng-click="exportSession(session.id)"><i class="fa fa-share-square " aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              
 
+              <!-- Modal -->
+            <div class="modal fade" id="myButtonEdit{{$index}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <div class="container-fluid">
+                      <div class="row">
+                          <div class="mx-auto">
+                              <div class="card card-signin my-5">
+                                  <div class="card-body">
+                                      <h5 class="card-title text-center"><b>Modifier profil</b></h5><br>
+                                      <form class="form-signin" action="./bienvenue-admin.html">
+                                          <div class="form-label-group">
+                                              <div class="row">
+                                                  <div class="col-md-4">
+                                                      Nom
+                                                  </div>
+                                                  <div class="col-md-8">
+                                                      <input type="text" id="nom" value= "" class="form-control" placeholder="Nom" required autofocusz>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="form-label-group">
+                                              <br>
+                                              <div class="row">
+                                                  <div class="col-md-4">
+                                                    Email
+                                                  </div>
+                                                  <div class="col-md-8">
+                                                      <input type="email" id="prenom" class="form-control" placeholder="Prénom" required autofocus>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="form-label-group">
+                                              <br>
+                                              <div class="row">
+                                                  <div class="col-md-4">
+                                                      Mot de passe
+                                                  </div>
+                                                  <div class="col-md-8">
+                                                      <input type="text" id="inputEmail" class="form-control" placeholder="Nouveau mot de passe" required autofocus>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <br>
+                                      <div class="form-label-group">
+                                      <br>
+                                      <div class="container-fluid text-center">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <a href="./bienvenue.html"><button type="button" id="annuler"   class="btn btn-danger">Annuler</button></a>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="submit"  id="modification"   class="btn btn-success">Valider</button>
+                                            </div>         
+                                                
+                                        </div>
+                                        </div>
+                                              
+                                        </div>
+                                      </form>
+                                  </div>
+                               </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
               <!-- Button trigger modal
               <button type="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                 Launch demo modal
@@ -120,7 +180,7 @@
                     </div>
                     <div >
 
-                      
+
                      <!-- Default radio -->
                      <div class="form-check text-center">
                       <input
@@ -145,7 +205,7 @@
                       <label class="form-check-label" for="blocage">Blocage </label>
                     </div>
                     </div>
-                  
+
 ​
                     <div class="modal-footer">
                       <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
@@ -177,7 +237,82 @@
               <hr>
             </div>
             <div class="jumbotron">
-              <a href="./parrainage.html"><i class="fa fa-plus" aria-hidden="true"></i>  Ajouter une session </a>
+              <div ng-if="isAdmin">
+                <a style="font-size:20px;" data-toggle="modal" href="#isButtonSession"><i class="fa fa-plus" aria-hidden="true"></i></a>
+              </div>
+              <div ng-if="!isAdmin">
+                <a href="./parrainage.html"><i class="fa fa-plus" aria-hidden="true"></i>  Ajouter une session </a>
+              </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="isButtonSession" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <div class="container-fluid">
+                      <div class="row">
+                          <div class="mx-auto">
+                              <div class="card card-signin my-5">
+                                  <div class="card-body">
+                                      <h5 class="card-title text-center"><b>Créer une session</b></h5><br>
+                                      <form class="form-signin" action="./bienvenue.html">
+                                          <div class="form-label-group">
+                                              <div class="row">
+                                                  <div class="col-md-4">
+                                                      Nom
+                                                  </div>
+                                                  <div class="col-md-8">
+                                                      <input type="text" id="nom" value= "" class="form-control" placeholder="Nom" required autofocusz>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="form-label-group">
+                                              <br>
+                                              <div class="row">
+                                                  <div class="col-md-4">
+                                                    Email
+                                                  </div>
+                                                  <div class="col-md-8">
+                                                      <input type="email" id="prenom" class="form-control" placeholder="Prénom" required autofocus>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="form-label-group">
+                                              <br>
+                                              <div class="row">
+                                                  <div class="col-md-4">
+                                                    Mot de passe
+                                                  </div>
+                                                  <div class="col-md-8">
+                                                      <input type="text" id="inputEmail" class="form-control" placeholder="Nouveau mot de passe" required autofocus>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <br>
+                                      <div class="form-label-group">
+                                      <br>
+                                      <div class="container-fluid text-center">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                              <a href="./bienvenue.html"><button type="button" id="annuler"   class="btn btn-danger">Annuler</button></a>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="submit"  id="modification"   class="btn btn-success">Valider</button>
+                                            </div>         
+                                                
+                                        </div>
+                                        </div>
+                                              
+                                        </div>
+                                      </form>
+                                  </div>
+                               </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
             </div>
           </div>
         </div>

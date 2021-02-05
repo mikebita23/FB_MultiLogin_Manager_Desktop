@@ -26,6 +26,8 @@ myApp.controller('sessionController', function ($scope, $http) {
         }, function errorCallback(response) {
             console.log('Un problème est survenu.');
         });
+
+    $scope.isAdmin = true
 });
 
 $.when($.ready).then(_ =>{ 
