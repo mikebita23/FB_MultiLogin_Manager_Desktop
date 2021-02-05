@@ -3,6 +3,8 @@ window.$ = window.jQuery = require("../../../node_modules/jquery/dist/jquery");
 
 var myApp = angular.module('myApp', []);
 
+
+
 myApp.controller('sessionController', function ($scope, $http) {
     
     $scope.openSession = id => {
@@ -12,11 +14,13 @@ myApp.controller('sessionController', function ($scope, $http) {
     $scope.exportSession = id =>{
         ipcRenderer.send('export-session', id);
     }
-
-    ipcRenderer.send('get-sessions')
+    ipcRenderer.send('get-sessions')    
     ipcRenderer.on('get-sessions-reply', ( _ , sessions) => {
+        $scope.sessions = sessions
         console.log("sessions : ", sessions);
     })
+
+
     $http({
         method: 'GET',
         url: './sessions.json'

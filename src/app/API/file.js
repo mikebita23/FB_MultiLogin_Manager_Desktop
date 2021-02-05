@@ -28,7 +28,7 @@ module.exports = {
         })
     },
 
-    getSessionData = (id, Dir) => {
+    getSessionData: (id, Dir) => {
         request({
             method: 'GET',
             url: `${__API_URL}/session/getData/${id}`,

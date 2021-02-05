@@ -11,7 +11,6 @@ const save = require('./Controllers/sessionDataController').export
 const getSessions = require('./API/session').getSessions
 const connect = require('./API/auth').connect
 const createUser = require('./API/user').signUp
-const getSessions = require('./API/session').getSessions
 const apiMessage = require('./API/message');
 const apiUser = require('./API/user');
 
@@ -32,8 +31,11 @@ ipcMain.on('open-session', (e, idSession)=>{
 
 
 ipcMain.on('get-session', event => {
-    getSessions().then(res =>{
-        // event.reply('get-session-reply', )
+    console.log("asking for sessions");
+    getSessions(true).then(res =>{
+        console.log("wasaaaap");
+        console.log('got this response : ',res);
+        event.reply('get-session-reply', res)
     })
 })
 

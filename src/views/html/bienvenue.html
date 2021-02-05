@@ -154,13 +154,22 @@
                 </div>
               </div>
               <br>
-              <div ng-if="session.etat == 'Active'">
-                <p class="text-success">{{session.etat}}.</p><br>
+              <div ng-if="session.status == 1">
+                <p class="text-success">Active .</p><br>
+                <button type="button" class="btn btn-primary" disabled>Session en cours ...&nbsp;&nbsp;<i
+                  class="fa fa-spinner" aria-hidden="true"></i></button>
               </div>
-              <div ng-if="session.etat == 'Inactive'">
-                <p class="text-danger">{{session.etat}}.</p><br>
+              <div ng-if="session.status == 0">
+                <p class="text-secondary">Inactive .</p><br>
+                <button type="button" class="btn btn-primary" ng-click="openSession(session.id)">Lancer session&nbsp;&nbsp;<i
+                  class="fa fa-arrow-right" aria-hidden="true"></i></button>
               </div>
-              <div ng-if="session.etat == 'Active'">
+              <div ng-if="session.status == -1">
+                <p class="text-danger">Blocked .</p><br>
+                <button type="button" class="btn btn-warning" disabled>Session blocked&nbsp;&nbsp;</button>
+              </div>
+              
+              <!-- <div ng-if="session.etat == 'Active'">
                 <div ng-if="session.description == 'Session en cours'">
                   <button type="button" class="btn btn-primary">{{session.description}}&nbsp;&nbsp;<i
                       class="fa fa-spinner" aria-hidden="true"></i></button>
@@ -172,7 +181,7 @@
               </div>
               <div ng-if="session.etat == 'Inactive'">
                 <button type="button" class="btn btn-warning" disabled>{{session.description}}</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </div>
+              </div> -->
               <hr>
             </div>
             <div class="jumbotron">
