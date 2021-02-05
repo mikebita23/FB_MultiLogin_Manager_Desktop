@@ -14,22 +14,25 @@ myApp.controller('sessionController', function ($scope, $http) {
     $scope.exportSession = id =>{
         ipcRenderer.send('export-session', id);
     }
-    ipcRenderer.send('get-sessions')    
+        
     ipcRenderer.on('get-sessions-reply', ( _ , sessions) => {
         $scope.sessions = sessions
         console.log("sessions : ", sessions);
     })
 
+    $scope.askForSessions = () => {
+        ipcRenderer.send('get-sessions')
+    }
 
-    $http({
-        method: 'GET',
-        url: './sessions.json'
-    })
-        .then(function successCallback(response) {
-            $scope.sessions = response.data;
-        }, function errorCallback(response) {
-            console.log('Un problème est survenu.');
-        });
+    // $http({
+    //     method: 'GET',
+    //     url: './sessions.json'
+    // })
+    //     .then(function successCallback(response) {
+    //         $scope.sessions = response.data;
+    //     }, function errorCallback(response) {
+    //         console.log('Un problème est survenu.');
+    //     });
 });
 
 $.when($.ready).then(_ =>{ 
