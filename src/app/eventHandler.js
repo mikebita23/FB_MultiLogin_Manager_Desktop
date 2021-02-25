@@ -13,6 +13,7 @@ const connect = require('./API/auth').connect
 const createUser = require('./API/user').signUp
 const apiMessage = require('./API/message');
 const apiUser = require('./API/user');
+const getProfile = require('./API/user').getUser
 
 
 /** 
@@ -44,9 +45,11 @@ ipcMain.on('export-session', (e, idSession) =>{
 })
 
 ipcMain.on('ask-for-auth', (event, args) =>{
-    console.log(args);
+    
     connect(args.email, args.passWord).then(res => {
-        
+        getProfile().then(res => {
+            __user = res
+        }).catch(err => { console.log(err);})
         __token = res.token
         event.reply('ask-for-auth-reply', true)
     }).catch(err => {
@@ -54,9 +57,13 @@ ipcMain.on('ask-for-auth', (event, args) =>{
     })
 })
 
+ipcMain.on('get-header', event =>{
+    event.reply('get-header-reply', __requetHeader)
+})
+
+
 ipcMain.on('create-account', (event, user) => {
     createUser(user).then(res =>{
-        console.log(res);
         event.reply('create-account-reply', true)
     }).catch(console.log)
 })

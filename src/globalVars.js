@@ -15,7 +15,7 @@ const fs = require("fs-extra")
  * @description global variable containg the token wich will be used when communicating with the API
  */
 
-    global.__token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHJvb3QuY29tIiwidXNlcklkIjo4MDE4LCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MTI1MzUxNzgsImV4cCI6MTYxMjUzODc3OH0.pUeJjfjQNJoR7fVEb7gQrvQxuOe0yRGkrD1jf_hMvGI'
+    global.__token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHJvb3QuY29tIiwidXNlcklkIjo4MDE4LCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MTQwMDM1MjcsImV4cCI6MTYxNDAwNzEyN30.Eb8Qpcnt9cN30jFHpXnrBt7b490ET3GMVOn0XRGoAgw'
 
 
 /**
@@ -35,3 +35,10 @@ const fs = require("fs-extra")
    
     global.__sessionBackUpdir = path.join(__userDataDir, 'navSessionsBackup/')
     fs.ensureDirSync(__sessionBackUpdir)
+
+/**
+ * @global
+ * @name __user
+ * @description global variable containg the user data
+ */
+    global.__user = {}

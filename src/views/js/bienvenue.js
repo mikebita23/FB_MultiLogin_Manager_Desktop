@@ -3,13 +3,33 @@ window.$ = window.jQuery = require("../../../node_modules/jquery/dist/jquery");
 
 var myApp = angular.module('myApp', []);
 
+// ipcRenderer.send('get-sessions')
 
-
-myApp.controller('sessionController', function ($scope, $http) {
+myApp.controller('sessionController',['$scope', function ($scope, $http) {
     
+
+    // $scope.openForm = (action) => {
+    //     var modalInstance = $modal.open({
+    //         emplateUrl: '../html/modals/session.html',
+    //         controller: ($scope, $modalInstance, uId) => {
+    //             $scope.UserId = uId;
+    //           },
+    //         resolve: {
+    //             uId: function () {
+    //               return id;
+    //             }
+    //         }
+    //     })
+    // }
+
+    // var ModalInstanceCtrl = function 
+
     $scope.openSession = id => {
-        ipcRenderer.send('open-session', id);
+        console.log(id);
+        // ipcRenderer.send('open-session', id);
     }
+
+    ipcRenderer.send('get-sessions')
 
     $scope.exportSession = id =>{
         ipcRenderer.send('export-session', id);
@@ -17,23 +37,12 @@ myApp.controller('sessionController', function ($scope, $http) {
         
     ipcRenderer.on('get-sessions-reply', ( _ , sessions) => {
         $scope.sessions = sessions
-        console.log("sessions : ", sessions);
+        $scope.$apply()
     })
+    
 
-    $scope.askForSessions = () => {
-        ipcRenderer.send('get-sessions')
-    }
-
-    // $http({
-    //     method: 'GET',
-    //     url: './sessions.json'
-    // })
-    //     .then(function successCallback(response) {
-    //         $scope.sessions = response.data;
-    //     }, function errorCallback(response) {
-    //         console.log('Un problème est survenu.');
-    //     });
-});
+    $scope.isAdmin = false
+}]);
 
 $.when($.ready).then(_ =>{ 
     $('#messageButton').on('click', _ =>{
@@ -62,4 +71,5 @@ $(document).on('click', 'a[href^="http"]', function (event) {
     event.preventDefault();
     shell.openExternal(this.href);
 });
+
 
