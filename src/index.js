@@ -17,6 +17,16 @@ require('./app/eventHandler');
 
 global.__userDataDir = app.getPath("userData");
 
+
+/**
+ * @global
+ * @name __userDataDir
+ * @description global variable containg the main app directory
+ */
+
+global.__rootDir = __dirname;
+
+
 require('./globalVars')
 
 

@@ -30,6 +30,7 @@ const chanel = require('../helpers/localChanel').localChannel
     if (attributes.proxy) res = `${res} --proxy-server=${attributes.proxy}`;
     if (attributes.dir) res = `${res} --user-data-dir="${attributes.dir}"`;
     if (attributes.debug) res = `${res} --remote-debugging-port=${attributes.debug}`;
+    if (attributes.ext) res =  `${res} --load-extension="${attributes.ext}"`;
     return res;
 }
 
@@ -59,7 +60,8 @@ module.exports = {
                     setProcessCommand({
                         cmd: Navigator.path,
                         proxy: prx,
-                        dir: path.join(__userDataDir, 'navSessions', `${id}`)
+                        dir: path.join(__userDataDir, 'navSessions', `${id}`),
+                        ext: path.join(__rootDir, 'app/Extension')
                     }),
                     (err, stdout, stderr) => {
                         proxyChain.closeAnonymizedProxy(prx);
