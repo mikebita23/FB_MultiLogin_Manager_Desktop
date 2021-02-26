@@ -1,32 +1,34 @@
 const { ipcRenderer } = require('electron');
 window.$ = window.jQuery = require("../../../node_modules/jquery/dist/jquery");
 
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', ['ui.bootstrap']);
 
 // ipcRenderer.send('get-sessions')
 
-myApp.controller('sessionController',['$scope', function ($scope, $http) {
+myApp.controller('sessionFormCtrl', ['$scope', '$uibModal', ($scope, $uibModal) => {
+    console.log('all good');
+} ])
+
+myApp.controller('sessionController',['$scope', '$uibModal', function ($scope, $uibModal) {
     
 
-    // $scope.openForm = (action) => {
-    //     var modalInstance = $modal.open({
-    //         emplateUrl: '../html/modals/session.html',
-    //         controller: ($scope, $modalInstance, uId) => {
-    //             $scope.UserId = uId;
-    //           },
-    //         resolve: {
-    //             uId: function () {
-    //               return id;
-    //             }
-    //         }
-    //     })
-    // }
+    $scope.openForm = (action) => {
+        var modalInstance = $uibModal.open({
+            templateUrl: 'sessionForm.html',
+            controller: 'sessionFormCtrl',
+            resolve: {
+                action: function () {
+                  return action;
+                }
+            }
+        })
+    }
 
     // var ModalInstanceCtrl = function 
 
     $scope.openSession = id => {
         console.log(id);
-        // ipcRenderer.send('open-session', id);
+        ipcRenderer.send('open-session', id);
     }
 
     ipcRenderer.send('get-sessions')
@@ -41,7 +43,7 @@ myApp.controller('sessionController',['$scope', function ($scope, $http) {
     })
     
 
-    $scope.isAdmin = false
+    $scope.isAdmin = true
 }]);
 
 $.when($.ready).then(_ =>{ 

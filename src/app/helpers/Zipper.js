@@ -1,5 +1,6 @@
 const fs = require('fs');
 const archiver = require('archiver');
+const extract = require('extract-zip')
 
 /**
  * @module
@@ -29,5 +30,15 @@ module.exports = {
             stream.on('close', () => resolve());
             archive.finalize();
         });
+    },
+
+    decompress: async (opts) => {
+        try {
+            await extract(opts.src, { dir: opts.out})
+            console.log('Extraction complete')
+        } catch (err) {
+            // handle any errors
+            console.log(err);
+        }
     }
 }

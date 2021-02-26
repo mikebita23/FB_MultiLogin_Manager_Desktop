@@ -14,10 +14,10 @@ module.exports = {
      * @description send POST request containing the file
      * @returns {Promise} request's promise
      */
-    uploadFile: (Dir) => {
+    uploadFile: (Dir, name) => {
         return request({
             method: 'POST',
-            url: `${__API_URL}/file/upload`,
+            url: `${__API_URL}/file/upload/${name}`,
             headers: {
                 'Authorization': `Bearer ${__token}`,
                 'Content-Type': 'multipart/form-data; charset=UTF-8'
@@ -28,14 +28,13 @@ module.exports = {
         })
     },
 
-    getSessionData: (id, Dir) => {
-        request({
+    downloadFile: (id)=> {
+        return request({
             method: 'GET',
-            url: `${__API_URL}/session/getData/${id}`,
+            url: `${__API_URL}/file/getSession/${id}`,
             headers: {
-                'Authorization': `Bearer ${__token}`
-            },
-            encoding: null
+                'Authorization': `Bearer ${__token}`,
+            }
         })
     }
 }

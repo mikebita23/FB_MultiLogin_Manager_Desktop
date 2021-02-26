@@ -11,6 +11,8 @@ const api = require('../API/proxy')
 const path = require('path')
 const proxyChain = require('proxy-chain');
 const chanel = require('../helpers/localChanel').localChannel
+const fs = require('fs')
+const sdCtrl = require('./sessionDataController')
 
 /**
  * Transform an object of parameters to an executable CLI command
@@ -50,23 +52,32 @@ module.exports = {
      */
 
      open: (id) => {
-        api.getProxy().then(res => {
-            let lumProxy = JSON.parse(res).url;
-            let localChanel = new chanel(localServerCallback)
-            proxyChain.anonymizeProxy(lumProxy).then(prx => {
-                localChanel.start()
-                let child = exec(
-                    setProcessCommand({
-                        cmd: Navigator.path,
-                        proxy: prx,
-                        dir: path.join(__userDataDir, 'navSessions', `${id}`)
-                    }),
-                    (err, stdout, stderr) => {
-                        proxyChain.closeAnonymizedProxy(prx);
-                        localChanel.stop()
-                    }
-                )
-            });
-        })
+
+        try {
+            if(fs.existsSync(path.join(__userDataDir, 'navSessions', `${id}`))){
+                api.getProxy().then(res => {
+                    let lumProxy = JSON.parse(res).url;
+                    let localChanel = new chanel(localServerCallback)
+                    proxyChain.anonymizeProxy(lumProxy).then(prx => {
+                        localChanel.start()
+                        let child = exec(
+                            setProcessCommand({
+                                cmd: Navigator.path,
+                                proxy: prx,
+                                dir: path.join(__userDataDir, 'navSessions', `${id}`)
+                            }),
+                            (err, stdout, stderr) => {
+                                proxyChain.closeAnonymizedProxy(prx);
+                                localChanel.stop()
+                            }
+                        )
+                    });
+                })
+            }else{
+                sdCtrl.download(id)
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
 }

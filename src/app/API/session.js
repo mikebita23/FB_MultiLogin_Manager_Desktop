@@ -55,5 +55,15 @@ module.exports = {
             body: data,
             json: true
         })
+    },
+    getSessionData: (id) => {
+        request({
+            method: 'GET',
+            url: `${__API_URL}/session/getData/${id}`,
+            headers: {
+                'Authorization': `Bearer ${__token}`
+            },
+            encoding: null
+        })
     }
 }
