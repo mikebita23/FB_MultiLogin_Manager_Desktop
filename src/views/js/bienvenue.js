@@ -30,6 +30,22 @@ myApp.controller('sessionController', function ($scope, $http) {
         });
 });
 
+myApp.controller('sessionFormCtrl', function($scope, $uibModal) {
+
+    $scope.openForm = action => {
+        var modalInstance = $uibModal.open({
+            templateUrl: 'sessionForm.html',
+            controller: 'sessionFormCtrl',
+            size: 'sm',
+            resolve: {
+                action: function () {
+                    return action;
+                }
+            }
+        });
+    }
+});
+
 $.when($.ready).then(_ =>{ 
     $('#messageButton').on('click', _ =>{
         $("#messageButton").prop("disabled", true);
