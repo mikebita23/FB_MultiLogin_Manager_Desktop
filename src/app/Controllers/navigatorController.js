@@ -8,11 +8,11 @@
 const Navigator = require('chromium');
 const { exec } = require('child_process');
 const api = require('../API/proxy')
+const sesion = require('../API/session')
 const path = require('path')
 const proxyChain = require('proxy-chain');
-const chanel = require('../helpers/localChanel').localChannel
 const fs = require('fs')
-const sdCtrl = require('./sessionDataController')
+const sdCtrl = require('./sessionDataController');
 
 /**
  * Transform an object of parameters to an executable CLI command
@@ -32,16 +32,10 @@ const sdCtrl = require('./sessionDataController')
     if (attributes.proxy) res = `${res} --proxy-server=${attributes.proxy}`;
     if (attributes.dir) res = `${res} --user-data-dir="${attributes.dir}"`;
     if (attributes.debug) res = `${res} --remote-debugging-port=${attributes.debug}`;
+    if (attributes.ext) res =  `${res} --load-extension="${attributes.ext}"`;
     return res;
 }
 
-const localServerCallback = (req, res) => {
-    if (req.method === 'POST' && req.url === '/get') 
-        res.end(JSON.stringify({
-            email: 'imported@gmail.com',
-            pwd: 'This_is_The_Fucking_Noker_Bitch' 
-        }))
-}
 
 module.exports = {
 
@@ -51,28 +45,34 @@ module.exports = {
      * @see API.proxy
      */
 
-     open: (id) => {
+    open: (id) => {
 
         try {
             if(fs.existsSync(path.join(__userDataDir, 'navSessions', `${id}`))){
-                api.getProxy().then(res => {
-                    let lumProxy = JSON.parse(res).url;
-                    let localChanel = new chanel(localServerCallback)
-                    proxyChain.anonymizeProxy(lumProxy).then(prx => {
-                        localChanel.start()
-                        let child = exec(
-                            setProcessCommand({
-                                cmd: Navigator.path,
-                                proxy: prx,
-                                dir: path.join(__userDataDir, 'navSessions', `${id}`)
-                            }),
-                            (err, stdout, stderr) => {
-                                proxyChain.closeAnonymizedProxy(prx);
-                                localChanel.stop()
-                            }
-                        )
-                    });
-                })
+                sesion.getSession(id).then((sessionData)=>{
+                    fs.writeFile(path.join(__rootDir, 'app/Extension/credentials.json'), JSON.stringify(sessionData.credentials), (err)=>{
+                        if(err){
+                            console.log('errrr');
+                            return console.log(err);
+                        }
+                        api.getProxy().then(res => {
+                            let lumProxy = JSON.parse(res).url;
+                            proxyChain.anonymizeProxy(lumProxy).then(prx => {
+                                let child = exec(
+                                    setProcessCommand({
+                                        cmd: Navigator.path,
+                                        proxy: prx,
+                                        dir: path.join(__userDataDir, 'navSessions', `${id}`),
+                                        ext: path.join(__rootDir, 'app/Extension')
+                                    }),
+                                    (err, stdout, stderr) => {
+                                        proxyChain.closeAnonymizedProxy(prx);
+                                    }
+                                )
+                            });
+                        })      
+                    })
+                }).catch(console.log)
             }else{
                 sdCtrl.download(id)
             }

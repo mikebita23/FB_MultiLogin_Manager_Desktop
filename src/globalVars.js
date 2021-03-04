@@ -15,7 +15,7 @@ const fs = require("fs-extra")
  * @description global variable containg the token wich will be used when communicating with the API
  */
 
-    global.__token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHJvb3QuY29tIiwidXNlcklkIjo4MDE4LCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MTQwMDM1MjcsImV4cCI6MTYxNDAwNzEyN30.Eb8Qpcnt9cN30jFHpXnrBt7b490ET3GMVOn0XRGoAgw'
+    global.__token = ''
 
 
 /**

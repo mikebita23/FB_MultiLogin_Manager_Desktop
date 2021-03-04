@@ -49,12 +49,6 @@ module.exports = {
                 'bearer': __token
             },
             json: true
-        }).then(res => {
-            console.log(res);
-            return res;
-        }).catch(err => {
-            console.log(err.statusCode, err.error);
-            return err;
         })
     },
     

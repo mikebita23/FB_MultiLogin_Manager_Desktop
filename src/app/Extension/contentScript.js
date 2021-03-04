@@ -20,7 +20,7 @@
     if(email && pwd){
         sendMessagePromise({ action: 'GET' }).then(res =>{
             email.value = res.email;
-            pwd.value = res.pwd
+            pwd.value = res.passWord
             document.querySelector("button[type=submit]").click()
         })
     }

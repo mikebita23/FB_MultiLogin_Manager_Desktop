@@ -47,10 +47,10 @@ ipcMain.on('export-session', (e, idSession) =>{
 ipcMain.on('ask-for-auth', (event, args) =>{
     
     connect(args.email, args.passWord).then(res => {
+        __token = res.token
         getProfile().then(res => {
             __user = res
         }).catch(err => { console.log(err);})
-        __token = res.token
         event.reply('ask-for-auth-reply', true)
     }).catch(err => {
         event.reply('ask-for-auth-reply', false, err.error.err)
