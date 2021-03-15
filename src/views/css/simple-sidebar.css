@@ -66,8 +66,14 @@
   }
 }
 
+.test{
+  background-color: red;
+  margin-right: 5em;
+}
+
 .has-search .form-control {
-  padding-left: 2.375rem;
+  padding-left: 2.5rem;
+  
 }
 
 .has-search .form-control-feedback {
@@ -105,6 +111,14 @@ a:link
   background-color:rgb(34, 31, 231);
   color:white;
   /*font-size: 0.9em;*/
+}
+.border-right{
+  margin-right: 6em;
+}
+
+.main{
+  margin-top: 5em;
+  margin-bottom: 5em;
 }
 
 .valide{

@@ -30,6 +30,14 @@ myApp.controller('sessionController', function ($scope, $http) {
         });
 });
 
+
+
+
+
+
+
+
+
 myApp.controller('sessionFormCtrl', function($scope, $uibModal) {
 
     $scope.openForm = action => {

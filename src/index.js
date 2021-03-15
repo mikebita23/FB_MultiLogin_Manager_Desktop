@@ -41,8 +41,8 @@ require('electron-reload')(__dirname);
 const createWindow = () => {
     // Create the browser window.
     const mainWindow = new BrowserWindow({
-        width: 1600,
-        height: 700,
+        width: 1440,
+        height: 1024,
         minimizable: false,
         maximizable: false,
         webPreferences: {
