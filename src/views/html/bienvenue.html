@@ -17,7 +17,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap-tpls.js" integrity="sha512-Re9KhAaoh5qo/Cm/wtExVs7ETTKTx/81aXPHko2nWlUvTzELYhTwpp/DwUu+z8ul+DjtbJdPcmxEYwKewzG62w==" crossorigin="anonymous"></script>
   <script>window.$ = window.jQuery = require("../../../node_modules/jquery/dist/jquery.min.js");</script>
-
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.1.0/js/bootstrap-toggle.min.js"></script>
 
   <!-- Custom styles for this template -->
   <link href="../css/simple-sidebar.css" rel="stylesheet">
@@ -77,8 +77,8 @@
           <div class="row" >
               <div ng-repeat="session in sessions | filter:search">
                 <!--  -->
-                <b>{{session.name}}</b>&nbsp;&nbsp;<a data-toggle="modal" href="#myButtonEdit{{$index}}"
-                  ng-click="SessionDialog.open()" title="renommer"><i class="fa fa-pencil"
+                <b>{{session.name}}</b>&nbsp;&nbsp;<a 
+                  ng-click="SessionDialog.open(session)" title="renommer"><i class="fa fa-pencil"
                     aria-hidden="true"></i></a></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a title="envoyer un message" data-toggle="modal" href="#isButton" ng-click="getApps(session)"><i
                     class="fa fa-envelope TEXT-right" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
