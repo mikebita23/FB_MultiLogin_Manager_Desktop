@@ -78,7 +78,7 @@
               <div ng-repeat="session in sessions | filter:search">
                 <!--  -->
                 <b>{{session.name}}</b>&nbsp;&nbsp;<a data-toggle="modal" href="#myButtonEdit{{$index}}"
-                  ng-click="openForm('Edit')" title="renommer"><i class="fa fa-pencil"
+                  ng-click="SessionDialog.open()" title="renommer"><i class="fa fa-pencil"
                     aria-hidden="true"></i></a></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a title="envoyer un message" data-toggle="modal" href="#isButton" ng-click="getApps(session)"><i
                     class="fa fa-envelope TEXT-right" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -1,28 +1,46 @@
-const { ipcRenderer } = require('electron');
+const { ipcRenderer, app } = require('electron');
 window.$ = window.jQuery = require("../../../node_modules/jquery/dist/jquery");
 
 var myApp = angular.module('myApp', ['ui.bootstrap']);
 
+var sessionDialog = function () {
+    this.visible = false;
+}
+
+
+sessionDialog.prototype.open = (session) => {
+    this.session = session
+    this.visible = true
+}
+
+sessionDialog.prototype.close = () => {
+    this.visible = false;
+}
+
+
 // ipcRenderer.send('get-sessions')
 
-myApp.controller('sessionFormCtrl', ['$scope', '$uibModal', ($scope, $uibModal) => {
-    console.log('all good');
-} ])
+// myApp.controller('sessionFormCtrl', ['$scope', '$uibModal', ($scope, $uibModal) => {
+//     console.log('all good');
+// } ])
 
 myApp.controller('sessionController',['$scope', '$uibModal', function ($scope, $uibModal) {
     
+    
+    $scope.SessionDialog = new sessionDialog()
 
-    $scope.openForm = (action) => {
-        var modalInstance = $uibModal.open({
-            templateUrl: 'sessionForm.html',
-            controller: 'sessionFormCtrl',
-            resolve: {
-                action: function () {
-                  return action;
-                }
-            }
-        })
-    }
+
+    // $scope.openForm = (action) => {
+    //     var modalInstance = $uibModal.open({
+    //         templateUrl: 'sessionForm.html',
+    //         controller: 'sessionFormCtrl',
+    //         resolve: {
+    //             action: function () {
+    //               return action;
+    //             }
+    //         }
+    //     })
+    // }
 
     // var ModalInstanceCtrl = function 
 
@@ -45,6 +63,36 @@ myApp.controller('sessionController',['$scope', '$uibModal', function ($scope, $
 
     $scope.isAdmin = true
 }]);
+
+myApp.directive('sessionDialog', [() =>{
+    return {
+        restrict: 'E',
+        scope: {
+          model: '=',
+        },
+        link: function(scope, element, attributes) {
+          scope.$watch('model.visible', function(newValue) {
+            var modalElement = element.find('.modal');
+            modalElement.modal(newValue ? 'show' : 'hide');
+          });
+          
+          element.on('shown.bs.modal', function() {
+            scope.$apply(function() {
+              scope.model.visible = true;
+            });
+          });
+    
+          element.on('hidden.bs.modal', function() {
+            scope.$apply(function() {
+              scope.model.visible = false;
+            });
+          });
+          
+        },
+        templateUrl: '../html/modals/sessionDialog.html',
+      };
+}])
+
 
 $.when($.ready).then(_ =>{ 
     $('#messageButton').on('click', _ =>{
