@@ -77,9 +77,8 @@
           <div class="row" >
               <div ng-repeat="session in sessions | filter:search">
                 <!--  -->
-                <b>{{session.name}}</b>&nbsp;&nbsp;<a 
-                  ng-click="SessionDialog.open(session)" title="renommer"><i class="fa fa-pencil"
-                    aria-hidden="true"></i></a></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>{{session.name}}</b>&nbsp;&nbsp;
+                <a data-toggle="modal" href="#myButtonEdit{{$index}}" ng-click="getApps(session)" title="renommer"><i class="fa fa-pencil" aria-hidden="true"></i></a></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a title="envoyer un message" data-toggle="modal" href="#isButton" ng-click="getApps(session)"><i
                     class="fa fa-envelope TEXT-right" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a title="Exporter la session" href="#" ng-click="exportSession(session.id)"><i
@@ -92,20 +91,76 @@
               <button type="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                 Launch demo modal
               </button> -->
-                <div id="myButton{{$index}}" class="collapse">
-                  <br>
-                  <form action="./bienvenue.html">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <input type="text" class="form-control" placeholder="Renommer" required>
-                      </div>
-                      <div class="col-md-2">
-                        <button type="submit" class="btn btn-success" id="myButton{{$index}}" ng-model="dav">ok</button>
-                        {{dav}}
+              <div class="modal fade" id="myButtonEdit{{$index}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <div class="container-fluid">
+                        <div class="row">
+                            <div class="mx-auto">
+                                <div class="card card-signin my-5">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center"><b>Modifier profil</b></h5><br>
+                                        <form class="form-signin" action="./bienvenue-admin.html">
+                                            <div class="form-label-group">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        Nom
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <input type="text" id="nom"  class="form-control" placeholder="Nom" required value="{{ session.name }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-label-group">
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                      Email
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <input type="email" id="prenom" class="form-control" placeholder="Email" required value="{{ session.credentials.email }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-label-group">
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        Mot de passe
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <input type="text" id="inputEmail" class="form-control" placeholder="Nouveau mot de passe" required  value="{{ session.credentials.passWord }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                        <div class="form-label-group">
+                                        <br>
+                                        <div class="container-fluid text-center">
+                                          <div class="row">
+                                              <div class="col-md-6">
+                                                  <a href="./bienvenue.html"><button type="button" id="annuler"   class="btn btn-danger">Annuler</button></a>
+                                              </div>
+                                              <div class="col-md-6">
+                                                  <button type="submit"  id="modification"   class="btn btn-success">Valider</button>
+                                              </div>         
+                                                  
+                                          </div>
+                                          </div>
+                                                
+                                          </div>
+                                        </form>
+                                    </div>
+                                 </div>
+                            </div>
+                        </div>
                       </div>
                     </div>
-                  </form>
                 </div>
+              </div>
+            </div>
+  
 
                 <!-- Modal -->
                 <div class="modal fade" id="isButton" tabindex="-1" role="dialog"
@@ -256,83 +311,7 @@
       </div>
       
       <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-      <script type="text/ng-template" id="sessionForm.html">
-        <div class="" id="myButtonEdit{{$index}}" tabindex="-1" role="dialog"
-          aria-labelledby="exampleModalCenterTitle" ng-controller="sessionFormCtrl">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="mx-auto">
-                      <div class="card card-signin my-5">
-                        <div class="card-body">
-                          <h5 class="card-title text-center"><b>Modifier profil</b></h5><br>
-                          <form class="form-signin" action="./bienvenue-admin.html">
-                            <div class="form-label-group">
-                              <div class="row">
-                                <div class="col-md-4">
-                                  Nom
-                                </div>
-                                <div class="col-md-8">
-                                  <input type="text" id="nom" value="" class="form-control" placeholder="Nom"
-                                    required autofocusz>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="form-label-group">
-                              <br>
-                              <div class="row">
-                                <div class="col-md-4">
-                                  Email
-                                </div>
-                                <div class="col-md-8">
-                                  <input type="email" id="prenom" class="form-control" placeholder="Prénom"
-                                    required autofocus>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="form-label-group">
-                              <br>
-                              <div class="row">
-                                <div class="col-md-4">
-                                  Mot de passe
-                                </div>
-                                <div class="col-md-8">
-                                  <input type="text" id="inputEmail" class="form-control"
-                                    placeholder="Nouveau mot de passe" required autofocus>
-                                </div>
-                              </div>
-                            </div>
-                            <br>
-                            <div class="form-label-group">
-                              <br>
-                              <div class="container-fluid text-center">
-                                <div class="row">
-                                  <div class="col-md-6">
-                                    <a href="./bienvenue.html"><button type="button" id="annuler"
-                                        class="btn btn-danger">Annuler</button></a>
-                                  </div>
-                                  <div class="col-md-6">
-                                    <button type="submit" id="modification"
-                                      class="btn btn-success">Valider</button>
-                                  </div>
-
-                                </div>
-                              </div>
-
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </script>
+      
 </body>
 
 </html>

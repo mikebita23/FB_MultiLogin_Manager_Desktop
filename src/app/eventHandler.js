@@ -8,7 +8,7 @@
 const { ipcMain } = require('electron');
 const openNav = require('./Controllers/navigatorController').open
 const save = require('./Controllers/sessionDataController').export
-const getSessions = require('./API/session').getSessions
+const getSessions = require('./API/session').getFullSessions
 const connect = require('./API/auth').connect
 const createUser = require('./API/user').signUp
 const apiMessage = require('./API/message');

@@ -3,31 +3,31 @@ window.$ = window.jQuery = require("../../../node_modules/jquery/dist/jquery");
 
 var myApp = angular.module('myApp', ['ui.bootstrap']);
 
-var sessionDialog = function () {
-    this.visible = false;
-}
+// var sessionDialog = function () {
+//     this.visible = false;
+// }
 
 
-sessionDialog.prototype.open = (session) => {
-    this.session = session
-    this.visible = true
-}
+// sessionDialog.prototype.open = (session) => {
+//     this.session = session
+//     this.visible = true
+// }
 
-sessionDialog.prototype.close = () => {
-    this.visible = false;
-}
+// sessionDialog.prototype.close = () => {
+//     this.visible = false;
+// }
 
 
-// ipcRenderer.send('get-sessions')
+// // ipcRenderer.send('get-sessions')
 
-// myApp.controller('sessionFormCtrl', ['$scope', '$uibModal', ($scope, $uibModal) => {
-//     console.log('all good');
-// } ])
+// // myApp.controller('sessionFormCtrl', ['$scope', '$uibModal', ($scope, $uibModal) => {
+// //     console.log('all good');
+// // } ])
 
 myApp.controller('sessionController',['$scope', '$uibModal', function ($scope, $uibModal) {
     
     
-    $scope.SessionDialog = new sessionDialog()
+    // $scope.SessionDialog = new sessionDialog()
 
 
     // $scope.openForm = (action) => {
@@ -57,6 +57,7 @@ myApp.controller('sessionController',['$scope', '$uibModal', function ($scope, $
         
     ipcRenderer.on('get-sessions-reply', ( _ , sessions) => {
         $scope.sessions = sessions
+        
         $scope.$apply()
     })
     
