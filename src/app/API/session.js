@@ -19,6 +19,37 @@ module.exports = {
         })
     },
 
+    getFullSessions: async (all) => {
+        let result = []
+        let sessions = await request({
+            method: 'GET',
+            url: `${__API_URL}/session/get/all`,
+            headers: {
+                'Authorization': `Bearer ${__token}`
+            },
+            body: {
+                allAccounts: all || false
+            },
+            json: true
+        })
+
+        for (let i = 0; i < sessions.length; i++) {
+            result.push(await request({
+                method: 'GET',
+                url: `${__API_URL}/session/get/${sessions[i].id}`,
+                headers: {
+                    'Authorization': `Bearer ${__token}`
+                },
+                body: {
+                    allAccounts: all || flase
+                },
+                json: true
+            }))
+        }
+
+        return result
+    },
+
     getSessions: (all) => {
         return request({
             method: 'GET',

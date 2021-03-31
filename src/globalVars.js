@@ -7,7 +7,7 @@ const fs = require("fs-extra")
  * @description global variable containg API url
  */
 
-     global.__API_URL = "http://localhost:3004";
+     global.__API_URL = "http://api.infinite-scale.fr";
 
 /**
  * @global
