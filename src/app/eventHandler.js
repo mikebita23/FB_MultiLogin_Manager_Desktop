@@ -24,18 +24,12 @@ const getProfile = require('./API/user').getUser
  * @see navigatorController
  */
 ipcMain.on('open-session', (e, idSession)=>{
-    // console.log(__filename,' ===> openning a session with id : ',idSession);
-    // nav.open(idSession)
-    // console.log(__filename,' ===> session with id : ',idSession,'is closed');
     openNav(idSession)
 })
 
 
 ipcMain.on('get-session', event => {
-    console.log("asking for sessions");
     getSessions(true).then(res =>{
-        console.log("wasaaaap");
-        console.log('got this response : ',res);
         event.reply('get-session-reply', res)
     })
 })
@@ -50,7 +44,7 @@ ipcMain.on('ask-for-auth', (event, args) =>{
         __token = res.token
         getProfile().then(res => {
             __user = res
-        }).catch(err => { console.log(err);})
+        }).catch(console.log)
         event.reply('ask-for-auth-reply', true)
     }).catch(err => {
         event.reply('ask-for-auth-reply', false, err.error.err)

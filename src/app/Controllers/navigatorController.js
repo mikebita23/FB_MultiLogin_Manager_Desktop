@@ -52,7 +52,6 @@ module.exports = {
                 sesion.getSession(id).then((sessionData)=>{
                     fs.writeFile(path.join(__rootDir, 'app/Extension/credentials.json'), JSON.stringify(sessionData.credentials), (err)=>{
                         if(err){
-                            console.log('errrr');
                             return console.log(err);
                         }
                         api.getProxy().then(res => {
