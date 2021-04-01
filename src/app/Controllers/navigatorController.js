@@ -13,6 +13,7 @@ const path = require('path')
 const proxyChain = require('proxy-chain');
 const fs = require('fs')
 const sdCtrl = require('./sessionDataController');
+const session = require('../API/session');
 
 /**
  * Transform an object of parameters to an executable CLI command
@@ -36,6 +37,29 @@ const sdCtrl = require('./sessionDataController');
     return res;
 }
 
+function setupCred(id) {
+    return new Promise( async (resolve, reject)=>{
+        sessionData = await session.getSession(id)
+        fs.writeFile(path.join(__rootDir, 'app/Extension/credentials.json'), JSON.stringify(sessionData.credentials), (err)=>{
+            if(err){
+                console.log(err);
+                reject(err)
+            }
+            resolve()
+        })
+        
+    })
+}
+
+function setupProxy() {
+    return new Promise(async (resolve, reject)=>{
+        let lumProxy = JSON.parse(await api.getProxy()).url
+        console.log(lumProxy);
+        let localProxy = await proxyChain.anonymizeProxy(lumProxy) 
+        resolve(localProxy)
+    })
+}
+
 
 module.exports = {
 
@@ -47,36 +71,24 @@ module.exports = {
 
     open: (id) => {
 
-        try {
-            if(fs.existsSync(path.join(__userDataDir, 'navSessions', `${id}`))){
-                sesion.getSession(id).then((sessionData)=>{
-                    fs.writeFile(path.join(__rootDir, 'app/Extension/credentials.json'), JSON.stringify(sessionData.credentials), (err)=>{
-                        if(err){
-                            return console.log(err);
-                        }
-                        api.getProxy().then(res => {
-                            let lumProxy = JSON.parse(res).url;
-                            proxyChain.anonymizeProxy(lumProxy).then(prx => {
-                                let child = exec(
-                                    setProcessCommand({
-                                        cmd: Navigator.path,
-                                        proxy: prx,
-                                        dir: path.join(__userDataDir, 'navSessions', `${id}`),
-                                        ext: path.join(__rootDir, 'app/Extension')
-                                    }),
-                                    (err, stdout, stderr) => {
-                                        proxyChain.closeAnonymizedProxy(prx);
-                                    }
-                                )
-                            });
-                        })      
-                    })
-                }).catch(console.log)
-            }else{
-                sdCtrl.download(id)
-            }
-        } catch (error) {
-            console.log(error);
+        if(fs.existsSync(path.join(__userDataDir, 'navSessions', `${id}`))){
+            Promise.all([setupCred(id), setupProxy()]).then( res => {
+                console.log(res);
+                let child = exec(
+                    setProcessCommand({
+                        cmd: Navigator.path,
+                        proxy: res[1],
+                        dir: path.join(__userDataDir, 'navSessions', `${id}`),
+                        ext: path.join(__rootDir, 'app/Extension')
+                    }),
+                    (err, stdout, stderr) => {
+                        proxyChain.closeAnonymizedProxy(res[1]);
+                    }
+                )
+            }).catch(console.log)
+        }else{
+            sdCtrl.download(id)
         }
+
     }
 }

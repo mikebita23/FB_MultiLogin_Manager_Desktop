@@ -77,7 +77,6 @@ module.exports = {
     },
 
     update: (data) => {
-        console.log(data);
         return request({
             method: 'PATCH',
             url: `${__API_URL}/session/edit/${data.id}`,
@@ -89,7 +88,7 @@ module.exports = {
         })
     },
     getSessionData: (id) => {
-        request({
+        return request({
             method: 'GET',
             url: `${__API_URL}/session/getData/${id}`,
             headers: {
