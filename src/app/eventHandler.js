@@ -5,10 +5,12 @@
  * @description module that manage the communication between the front and back end
  */
 
-const { ipcMain } = require('electron');
+const { ipcMain, session } = require('electron');
 const openNav = require('./Controllers/navigatorController').open
 const save = require('./Controllers/sessionDataController').export
 const getSessions = require('./API/session').getFullSessions
+const editSession = require('./API/session').update
+const createSession = require('./API/session').save
 const connect = require('./API/auth').connect
 const createUser = require('./API/user').signUp
 const apiMessage = require('./API/message');
@@ -31,6 +33,24 @@ ipcMain.on('open-session', (e, idSession)=>{
 ipcMain.on('get-session', event => {
     getSessions(true).then(res =>{
         event.reply('get-session-reply', res)
+    })
+})
+
+ipcMain.on('edit-session', (e, data)=>{
+    editSession(data).then( res =>{
+        console.log(res);
+        e.reply('edit-session-reply', {updated: true, id: data.id})
+    }).catch( err => {
+        console.log(err);
+        e.reply('edit-session-reply', false)
+    })
+})
+
+ipcMain.on('create-session', (e, data) => {
+    createSession(data).then(res =>{
+        e.reply('create-session-reply', true)
+    }).catch( err => {
+        e.reply('create-session-reply', false)
     })
 })
 

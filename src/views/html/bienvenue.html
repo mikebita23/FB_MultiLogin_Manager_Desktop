@@ -25,7 +25,6 @@
 </head>
 
 <body>
-
   <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
@@ -64,9 +63,8 @@
       </nav>
 
       <div class="container-fluid">
-
+        <div id="editSessionAlert" class="alert fade show" role="alert"></div>
         <h3>Liste de mes sessions</h3><br>
-
         <div ng-controller="sessionController">
           <div class="form-group has-search col-md-6">
             <span class="fa fa-search form-control-feedback"></span>
@@ -78,7 +76,7 @@
               <div ng-repeat="session in sessions | filter:search">
                 <!--  -->
                 <b>{{session.name}}</b>&nbsp;&nbsp;
-                <a data-toggle="modal" href="#myButtonEdit{{$index}}" ng-click="getApps(session)" title="renommer"><i class="fa fa-pencil" aria-hidden="true"></i></a></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a data-toggle="modal" href="#myButtonEdit{{session.id}}" ng-click="getApps(session)" title="renommer"><i class="fa fa-pencil" aria-hidden="true"></i></a></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a title="envoyer un message" data-toggle="modal" href="#isButton" ng-click="getApps(session)"><i
                     class="fa fa-envelope TEXT-right" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a title="Exporter la session" href="#" ng-click="exportSession(session.id)"><i
@@ -91,7 +89,7 @@
               <button type="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                 Launch demo modal
               </button> -->
-              <div class="modal fade" id="myButtonEdit{{$index}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal fade" id="myButtonEdit{{session.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -100,15 +98,15 @@
                             <div class="mx-auto">
                                 <div class="card card-signin my-5">
                                     <div class="card-body">
-                                        <h5 class="card-title text-center"><b>Modifier profil</b></h5><br>
-                                        <form class="form-signin" action="./bienvenue-admin.html">
+                                        <h5 class="card-title text-center"><b>Modifier Session</b></h5><br>
+                                        <form class="form-signin">
                                             <div class="form-label-group">
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         Nom
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <input type="text" id="nom"  class="form-control" placeholder="Nom" required value="{{ session.name }}">
+                                                        <input type="text" id="sessionName-{{session.id}}"  class="form-control" placeholder="Nom" required value="{{ session.name }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -119,7 +117,7 @@
                                                       Email
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <input type="email" id="prenom" class="form-control" placeholder="Email" required value="{{ session.credentials.email }}">
+                                                        <input type="email" id="sessionEmail-{{session.id}}" class="form-control" placeholder="Email" required value="{{ session.credentials.email }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -130,7 +128,7 @@
                                                         Mot de passe
                                                     </div>
                                                     <div class="col-md-8">
-                                                        <input type="text" id="inputEmail" class="form-control" placeholder="Nouveau mot de passe" required  value="{{ session.credentials.passWord }}">
+                                                        <input type="text" id="sessionPWD-{{session.id}}" class="form-control" placeholder="Nouveau mot de passe" required  value="{{ session.credentials.passWord }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -143,7 +141,7 @@
                                                   <a href="./bienvenue.html"><button type="button" id="annuler"   class="btn btn-danger">Annuler</button></a>
                                               </div>
                                               <div class="col-md-6">
-                                                  <button type="submit"  id="modification"   class="btn btn-success">Valider</button>
+                                                  <button type="submit"  id="modification" ng-click="editSession(session)"  class="btn btn-success">Valider</button>
                                               </div>         
                                                   
                                           </div>
@@ -246,7 +244,7 @@
                                         Nom
                                       </div>
                                       <div class="col-md-8">
-                                        <input type="text" id="nom" value="" class="form-control" placeholder="Nom"
+                                        <input type="text" id="sessionNewName" value="" class="form-control" placeholder="Nom"
                                           required autofocusz>
                                       </div>
                                     </div>
@@ -258,7 +256,7 @@
                                         Email
                                       </div>
                                       <div class="col-md-8">
-                                        <input type="email" id="prenom" class="form-control" placeholder="Prénom"
+                                        <input type="email" id="sessionNewEmail" class="form-control" placeholder="Prénom"
                                           required autofocus>
                                       </div>
                                     </div>
@@ -270,7 +268,7 @@
                                         Mot de passe
                                       </div>
                                       <div class="col-md-8">
-                                        <input type="text" id="inputEmail" class="form-control"
+                                        <input type="text" id="sessionNewPWD" class="form-control"
                                           placeholder="Nouveau mot de passe" required autofocus>
                                       </div>
                                     </div>
@@ -285,8 +283,8 @@
                                               class="btn btn-danger">Annuler</button></a>
                                         </div>
                                         <div class="col-md-6">
-                                          <button type="submit" id="modification"
-                                            class="btn btn-success">Valider</button>
+                                          <button type="button" id="modification"
+                                            class="btn btn-success" ng-click="createSession()">Valider</button>
                                         </div>
 
                                       </div>
